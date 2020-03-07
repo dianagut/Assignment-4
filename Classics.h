@@ -8,30 +8,27 @@
 
 #ifndef Classics_h
 #define Classics_h
+#include "Movie.h"
 
 class Classics: public Movie {
     
 public:
+    
+    Classics();
     Classics (const string&); // constructor
     
-    Classics(const string&, const int&, const int&); // constructor
+    Classics(const string&, const string&, const string&, const int&); // constructor
     
      ~Classics() // destructor
     
-    // returns movie information
-    virtual string createMovie() const;
-    
-    // info for customer transactions
-    virtual string creatCustomerHistory() const;
     
     static const char TYPE = 'C'; // movieType
-    bool isEqual(const Movie*) const;
     
 protected:
-    bool operator==(const Movie*) const;
-    bool operator!=(const Movie*) const;
-    bool operator>(const Movie*) const;
-    bool operator<(const Movie*)const;
+    bool operator==(const Movie&) const;
+    bool operator!=(const Movie&) const;
+    bool operator>(const Movie&) const;
+    bool operator<(const Movie&)const;
     
     int month; // release date
     string majorActor; // first name, last name

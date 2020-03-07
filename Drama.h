@@ -8,28 +8,24 @@
 
 #ifndef Drama_h
 #define Drama_h
+#include "Movie.h"
 
 class Drama: public Movie {
     
 public:
+    Drama();
     Drama(const string&); // constructor
-    Drama(const string&, const string&); // constructor
+    Drama(const string&, const string&, const int&); // constructor
     
     virtual ~Drama(); // destructor
-    
-    // returns movie information
-    virtual string createMovie() const;
-       
-    // info for customer transactions
-    virtual string creatCustomerHistory() const;
     
     static const char TYPE = 'D'; // movieType
     
 protected:
-    bool operator==(const Movie*) const;
-    bool operator!=(const Movie*) const;
-    bool operator>(const Movie*) const;
-    bool operator<(const Movie*)const;
+    bool operator==(const Movie&) const;
+    bool operator!=(const Movie&) const;
+    bool operator>(const Movie&) const;
+    bool operator<(const Movie&)const;
 };
 
 #endif /* Drama_h */
