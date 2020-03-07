@@ -8,27 +8,24 @@
 
 #ifndef Comedy_h
 #define Comedy_h
+#include <string>
+#include "Movie.h"
+using namespace std;
 
 class Comedy: public Movie {
     
 public:
-    Comedy(const string&); // constructor
-    Comedy(const string&, const int&); // constructor
+    Comedy();
+    Comedy(const string&, const string&, const int&); // constructor
     
     virtual ~Comedy(); // destructor
-    
-    // returns movie information
-    virtual string createMovie() const;
-       
-    // info for customer transactions
-    virtual string creatCustomerHistory() const;
     
     static const char TYPE = 'F'; // movieType
     
 protected:
-    bool operator==(const Movie*) const;
-    bool operator!=(const Movie*) const;
-    bool operator>(const Movie*) const;
-    bool operator<(const Movie*)const;
+    bool operator==(const Movie&) const;
+    bool operator!=(const Movie&) const;
+    bool operator>(const Movie&) const;
+    bool operator<(const Movie&)const;
 };
 #endif /* Comedy_h */
