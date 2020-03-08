@@ -19,9 +19,7 @@ public:
     
     Classics(const string&, const string&, const string&, const int&); // constructor
     
-     ~Classics() // destructor
-    
-    
+    std::istream& setData(std::istream &stream);
     static const char TYPE = 'C'; // movieType
     
 protected:
@@ -32,5 +30,7 @@ protected:
     
     int month; // release date
     string majorActor; // first name, last name
+    
+    std::ostream& toOutput(std::ostream &) const;
 };
 #endif /* Classics_h */
