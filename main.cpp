@@ -7,9 +7,25 @@
 //
 
 #include <iostream>
+#include <fstream>
+#include <string>
+#include <sstream>
+#include "Movie.h"
+#include <vector>
+#include "Inventory.hpp"
 
 int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
-    return 0;
+    std::ifstream infile("data4movies.txt");
+    std::string line;
+    Inventory inv;
+    
+    while (std::getline(infile, line))
+    {
+        Movie *m = Movie::fromLine(line);
+        if (m) {
+            inv.addItem(m);
+        }
+    }
+    
+   
 }

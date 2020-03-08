@@ -17,9 +17,7 @@ class Comedy: public Movie {
 public:
     Comedy();
     Comedy(const string&, const string&, const int&); // constructor
-    
-    virtual ~Comedy(); // destructor
-    
+    std::istream& setData(std::istream &stream);
     static const char TYPE = 'F'; // movieType
     
 protected:
@@ -27,5 +25,6 @@ protected:
     bool operator!=(const Movie&) const;
     bool operator>(const Movie&) const;
     bool operator<(const Movie&)const;
+    std::ostream& toOutput(std::ostream &) const;
 };
 #endif /* Comedy_h */

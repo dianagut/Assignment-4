@@ -6,20 +6,28 @@
 //  Copyright © 2020 Diana Gutierrez. All rights reserved.
 //
 
-#include <stdio.h>
 #include <string>
+#include <iostream>
+#include <fstream>
+#include <sstream>
 #include "Comedy.h"
 
-Comedy::Comedy(){
-    director = "";
-    title = "";
-    releaseYear = 0;
+Comedy::Comedy() : Movie(Comedy::TYPE){
 }
 
-Comedy::Comedy(const string& director, const string& title, const int& year){
+Comedy::Comedy(const string& director, const string& title, const int& year) :Movie(Comedy::TYPE){
     this->director = director;
     this->title = title;
     releaseYear = year;
+}
+
+std::istream& Comedy::setData(std::istream &stream)
+{
+    Movie::setData(stream);
+    std::string temp;
+    getline(stream, temp, ',');
+    releaseYear = std::stoi(temp);
+    return stream;
 }
 
 bool Comedy::operator<(const Movie &movie)const{
@@ -44,4 +52,10 @@ bool Comedy::operator==(const Movie& movie)const{
 
 bool Comedy::operator!=(const Movie& movie)const{
     return !(*this == movie);
+}
+
+std::ostream & Comedy::toOutput(std::ostream &output) const {
+    Movie::toOutput(output);
+    output << ", " << releaseYear;
+    return output;
 }

@@ -16,9 +16,7 @@ public:
     Drama();
     Drama(const string&); // constructor
     Drama(const string&, const string&, const int&); // constructor
-    
-    virtual ~Drama(); // destructor
-    
+    std::istream& setData(std::istream &stream);
     static const char TYPE = 'D'; // movieType
     
 protected:
@@ -26,6 +24,7 @@ protected:
     bool operator!=(const Movie&) const;
     bool operator>(const Movie&) const;
     bool operator<(const Movie&)const;
+    std::ostream& toOutput(std::ostream &) const;
 };
 
 #endif /* Drama_h */
