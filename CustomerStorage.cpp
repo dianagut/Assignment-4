@@ -1,20 +1,26 @@
-// ------------------------------------------- ReturnCommand.h ---------------------------------------------------
+// ------------------------------------------------ CustomerStorage ---------------------------------------------------
 // Andrea Shirley-Bellande & Diana Gutierrez , 343C
 // Created: March 6, 2020
 // Last Modified:
 // --------------------------------------------------------------------------------------------------------------------
-// Purpose:
+// Purpose: This class will Implement the transactioFactory
 // --------------------------------------------------------------------------------------------------------------------
 // Notes on specifications, special algorithms, and assumptions.
 // --------------------------------------------------------------------------------------------------------------------
 
-#ifndef Return_h
-#define Return_h
+#include "CustomerStorage.h"
 
-#include "transaction.h"
+CustomerStorage::~CustomerStorage() {
+    
+}
 
-class Return : public Transaction {
-public:
-    Return() : Transaction('R') { }
-};
-#endif
+void CustomerStorage::addCustomer(Customer *c) {
+    if (c && c->getID()) {
+        customers.put(c->getID(), c);
+    }
+}
+
+Customer* CustomerStorage::findCustomer(int id) {
+    Customer *c;
+    return customers.get(id, c) ? c : NULL;
+}

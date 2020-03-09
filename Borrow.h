@@ -15,12 +15,13 @@
 
 class Borrow : public Transaction {
 public:
+    Borrow() : Transaction('B') { }
     void processTransaction(StoreInventory*, CustomerStorage*);
-    void setData(std::string);
     int getCustomerId() { return customerId; }
     char getMediaType() { return mediaType; }
     char getMovieType() { return movieType; }
     std::string getMovieData() { return movieData; }
+    std::istream& setData(std::istream& stream);
     
 private:
     int customerId;

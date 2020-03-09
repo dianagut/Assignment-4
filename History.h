@@ -14,6 +14,7 @@
 #include "transaction.h"
 
 class History : public Transaction {
-    
+public:
+    History() : Transaction('H') { }
 };
 #endif

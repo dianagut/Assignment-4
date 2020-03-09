@@ -13,8 +13,9 @@
 
 using namespace std;
 
-Transaction::Transaction()
+Transaction::Transaction(char type)
 {
+    Type = type;
 }
 
 Transaction::~Transaction()
@@ -37,6 +38,7 @@ bool Transaction::customerCheck(Customer* customer, int ID)
 	return false;
 }
 
-void Transaction::setData(std::string) {
-    
+std::istream& Transaction::setData(std::istream& stream)
+{
+    return stream;
 }
