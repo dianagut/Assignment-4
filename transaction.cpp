@@ -21,6 +21,10 @@ Transaction::~Transaction()
 {
 }
 
+void Transaction::processTransaction()
+{
+}
+
 bool Transaction::customerCheck(Customer* customer, int ID)
 {
 	if (customer == NULL)
@@ -28,6 +32,7 @@ bool Transaction::customerCheck(Customer* customer, int ID)
 		ostringstream temp;
 		temp << ID;
 		cout << "Customer ID: " << temp.str() << " doesn't exist." << endl;
-
+		return true;
 	}
+	return false;
 }
