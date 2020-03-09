@@ -1,11 +1,13 @@
-//
-//  Inventory.cpp
-//  Assignment4
-//
-//  Created by Diana Gutierrez on 3/6/20.
-//  Copyright © 2020 Diana Gutierrez. All rights reserved.
-//
+// ------------------------------------------------ Inventory.cpp -------------------------------------------------------
+// Andrea Shirley-Bellande & Diana Gutierrez , 343C
+// Created: March 6, 2020
+// Last Modified:
+// --------------------------------------------------------------------------------------------------------------------
+// Purpose: 
+// -------------------------------------------------------------------------------------------------------------------- // Notes on specifications, special algorithms, and assumptions. 
+// -------------------------------------------------------------------------------------------------------------------- 
 
+<<<<<<< HEAD
 #include <iostream>
 #include "Inventory.hpp"
 
@@ -14,8 +16,16 @@ Inventory::Inventory() {
         sortedCount[i] = 0;
     }
     
+=======
+
+#include "Inventory.h"
+
+Inventory::Inventory()
+{
+
+>>>>>>> 888d2ed62f8022b0126b4d6233bc04ad21e0482e
 }
-void Inventory::addItem( Movie *m) {
+void Inventory::addItem(Movie* m) {
     if (m) {
         movies.put(m->getHashKey(), m);
         insertSorted(m);

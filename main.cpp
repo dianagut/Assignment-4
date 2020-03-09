@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 //
 //  main.cpp
 //  Assignment4
@@ -47,3 +48,29 @@ int main(int argc, const char * argv[]) {
     
     std::cout << "Inventory:\n" << inv << "\n";
 }
+=======
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <sstream>
+#include "Movie.h"
+#include <vector>
+#include "Inventory.h"
+using namespace std;
+
+int main() {
+    ifstream infile("data4movies.txt");
+    string line;
+    Inventory inv;
+
+    while (getline(infile, line))
+    {
+        Movie* m = Movie::fromLine(line);
+        if (m) {
+            inv.addItem(m);
+        }
+    }
+
+
+}
+>>>>>>> 888d2ed62f8022b0126b4d6233bc04ad21e0482e

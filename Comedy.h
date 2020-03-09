@@ -1,10 +1,12 @@
-//
-//  Comedy.h
-//  Assignment4
-//
-//  Created by Diana Gutierrez on 3/6/20.
-//  Copyright © 2020 Diana Gutierrez. All rights reserved.
-//
+// ------------------------------------------------Comedy.h -------------------------------------------------------
+// Andrea Shirley-Bellande & Diana Gutierrez , 343C
+// Created: March 6, 2020
+// Last Modified:
+// --------------------------------------------------------------------------------------------------------------------
+// Purpose:
+// -------------------------------------------------------------------------------------------------------------------- // Notes on specifications, special algorithms, and assumptions.
+// --------------------------------------------------------------------------------------------------------------------
+
 
 #ifndef Comedy_h
 #define Comedy_h
@@ -17,7 +19,7 @@
 using namespace std;
 
 class Comedy: public Movie {
-    
+
 public:
     Comedy();
     Comedy(const string&, const string&, const int&); // constructor

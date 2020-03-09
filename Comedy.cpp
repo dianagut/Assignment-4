@@ -1,17 +1,18 @@
-//
-//  Comedy.cpp
-//  Assignment4
-//
-//  Created by Diana Gutierrez on 3/6/20.
-//  Copyright © 2020 Diana Gutierrez. All rights reserved.
-//
+// ------------------------------------------------Comedy.cpp -------------------------------------------------------
+// Andrea Shirley-Bellande & Diana Gutierrez , 343C
+// Created: March 6, 2020
+// Last Modified:
+// --------------------------------------------------------------------------------------------------------------------
+// Purpose:
+// -------------------------------------------------------------------------------------------------------------------- // Notes on specifications, special algorithms, and assumptions.
+// --------------------------------------------------------------------------------------------------------------------
 
 #include "Comedy.h"
 
-Comedy::Comedy() : Movie(Comedy::TYPE){
+Comedy::Comedy() : Movie(Comedy::TYPE) {
 }
 
-Comedy::Comedy(const string& director, const string& title, const int& year) :Movie(Comedy::TYPE){
+Comedy::Comedy(const string& director, const string& title, const int& year) : Movie(Comedy::TYPE) {
     this->director = director;
     this->title = title;
     releaseYear = year;
