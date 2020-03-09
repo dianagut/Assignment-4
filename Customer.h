@@ -11,11 +11,15 @@
 #ifndef Customer2_h
 #define Customer2_h
 
+#include <string>
+#include <iostream>
+#include <fstream>
 #include <string> 
 
 using namespace std;
 
 class Customer {
+    friend ostream & operator<<(ostream &, const Customer &);
 
 public:
     Customer(); // default constructor
@@ -26,14 +30,15 @@ public:
   //  bool transaction(char, Movie*); // adds transaction to customer history
 
     // getter methods
-    int getID() const;
+    string getID() const;
     string getName() const;
     string getFirst() const; // getFirstName()
     string getLast() const;  // getLastName()
 
+    bool setData(istream&);
 
 private:
-    int customerID;
+    string customerID;
     string firstName;
     string lastName;
 };

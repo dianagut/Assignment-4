@@ -8,15 +8,13 @@
 // Notes on specifications, special algorithms, and assumptions. 
 // --------------------------------------------------------------------------------------------------------------------  
 
-#include <stdio.h>
-#include <string>
 #include "Customer.h"
 using namespace std;
 
 Customer::Customer() {
     firstName = "";
     lastName = "";
-    customerID = 0;
+    customerID = "";
 }
 
 Customer::Customer(string first, string last, int ID) {
@@ -29,7 +27,7 @@ Customer::~Customer() {
 
 }
 
-int Customer::getID()const {
+std::string Customer::getID()const {
     return customerID;
 }
 
@@ -43,4 +41,16 @@ string Customer::getFirst()const {
 
 string Customer::getLast() const {
     return lastName;
+}
+
+ostream & operator<<(ostream &output, const Customer &cust) {
+    output << cust.getID() << " " << cust.firstName << " " << cust.lastName;
+    return output;
+}
+
+bool Customer::setData(istream& infile) {
+    std::getline(infile, customerID, ' ');
+    std::getline(infile, firstName, ' ');
+    std::getline(infile, lastName);
+    return !infile.eof();       // eof function is true when eof char is read
 }
