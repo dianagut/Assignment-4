@@ -1,35 +1,36 @@
-//
-//  HashMap.cpp
-//  Movies
-//
-//  Created by Francisco Sanchez on 3/7/20.
-//  Copyright © 2020 Francisco Sanchez. All rights reserved.
-//
+// ------------------------------------------------HashMap.cpp -------------------------------------------------------
+// Andrea Shirley-Bellande & Diana Gutierrez , 343C
+// Created: March 6, 2020
+// Last Modified:
+// --------------------------------------------------------------------------------------------------------------------
+// Purpose: 
+// -------------------------------------------------------------------------------------------------------------------- // Notes on specifications, special algorithms, and assumptions. 
+// -------------------------------------------------------------------------------------------------------------------- 
 
-#include "HashMap.hpp"
+#include "HashMap.h"
 
 HashMap::HashMap() {
-    table = new HashNode *[TABLE_SIZE]();
+    table = new HashNode * [TABLE_SIZE]();
 }
 
 HashMap::~HashMap() {
     // destroy all bucstd::stringets one by one
     for (int i = 0; i < TABLE_SIZE; ++i) {
-        HashNode *entry = table[i];
+        HashNode* entry = table[i];
         while (entry != NULL) {
-            HashNode *prev = entry;
+            HashNode* prev = entry;
             entry = entry->getNext();
             delete prev;
         }
         table[i] = NULL;
     }
     // destroy the hash table
-    delete [] table;
+    delete[] table;
 }
 
-bool HashMap::get(const std::string &key, Movie* &value) {
+bool HashMap::get(const std::string& key, Movie*& value) {
     unsigned long hasValue = hashFunc(key);
-    HashNode *entry = table[hasValue];
+    HashNode* entry = table[hasValue];
 
     while (entry != NULL) {
         if (entry->getKey() == key) {
@@ -41,10 +42,10 @@ bool HashMap::get(const std::string &key, Movie* &value) {
     return false;
 }
 
-void HashMap::put(const std::string &key,  Movie* value) {
+void HashMap::put(const std::string& key, Movie* value) {
     unsigned long hasValue = hashFunc(key);
-    HashNode *prev = NULL;
-    HashNode *entry = table[hasValue];
+    HashNode* prev = NULL;
+    HashNode* entry = table[hasValue];
 
     while (entry != NULL && entry->getKey() != key) {
         prev = entry;
@@ -56,19 +57,21 @@ void HashMap::put(const std::string &key,  Movie* value) {
         if (prev == NULL) {
             // insert as first bucstd::stringet
             table[hasValue] = entry;
-        } else {
+        }
+        else {
             prev->setNext(entry);
         }
-    } else {
+    }
+    else {
         // just update the value
         entry->setValue(value);
     }
 }
 
-void HashMap::remove(const std::string &key) {
+void HashMap::remove(const std::string& key) {
     unsigned long hasValue = hashFunc(key);
-    HashNode *prev = NULL;
-    HashNode *entry = table[hasValue];
+    HashNode* prev = NULL;
+    HashNode* entry = table[hasValue];
 
     while (entry != NULL && entry->getKey() != key) {
         prev = entry;
@@ -83,7 +86,8 @@ void HashMap::remove(const std::string &key) {
         if (prev == NULL) {
             // remove first bucstd::stringet of the list
             table[hasValue] = entry->getNext();
-        } else {
+        }
+        else {
             prev->setNext(entry->getNext());
         }
         delete entry;
