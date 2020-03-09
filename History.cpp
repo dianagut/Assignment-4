@@ -1,4 +1,4 @@
-// ------------------------------------------- InventoryCommand.cpp ---------------------------------------------------
+// ----------------------------------------------- HistoryCommand.cpp -------------------------------------------------
 // Andrea Shirley-Bellande & Diana Gutierrez , 343C
 // Created: March 6, 2020
 // Last Modified:
@@ -8,4 +8,4 @@
 // Notes on specifications, special algorithms, and assumptions.
 // --------------------------------------------------------------------------------------------------------------------
 
-#include "Inventory.h"
+#include "History.h"

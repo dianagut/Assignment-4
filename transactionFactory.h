@@ -10,11 +10,12 @@
 
 #pragma once
 
-#include "Inventory.h"
+#include "StoreInventory.h"
 #include "transaction.h"
-//#include "borrow.h"
-//#include "return"
-//#include "history"
+#include "Borrow.h"
+#include "History.h"
+#include "Inventory.h"
+#include "Return.h"
 
 using namespace std;
 

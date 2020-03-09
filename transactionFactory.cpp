@@ -4,12 +4,13 @@
 // Last Modified:
 // --------------------------------------------------------------------------------------------------------------------
 // Purpose:
-// -------------------------------------------------------------------------------------------------------------------- // Notes on specifications, special algorithms, and assumptions. 
+// --------------------------------------------------------------------------------------------------------------------
+// Notes on specifications, special algorithms, and assumptions.
 // -------------------------------------------------------------------------------------------------------------------- 
 
 
 
-/*#include "transactionFactory.h"
+#include "transactionFactory.h"
 
 
 using namespace std;
@@ -37,5 +38,4 @@ Transaction* TransactionFactory::createTransaction(char& answer)
         break;
     }
     return transaction;
-}*/
- 
+}
