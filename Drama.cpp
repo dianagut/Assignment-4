@@ -36,7 +36,7 @@ bool Drama::operator<(const Movie &movie)const {
 std::string Drama::getHashKey() {
     if (hashKey.empty()) {
         hashKey = director + " " + title;
-            }
+    }
     return hashKey;
 }
 
