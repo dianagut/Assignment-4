@@ -29,7 +29,10 @@ Classics::Classics(const string& director, const string& title, const string& ma
 }
 
 std::string Classics::getHashKey() {
-    return std::to_string(month) + std::to_string(releaseYear) + majorActor;
+    if (hashKey.empty()) {
+        hashKey = std::to_string(month) + " " + std::to_string(releaseYear) + " " + majorActor;
+    }
+    return hashKey;
 }
 
 bool Classics::operator<(const Movie &movie)const {

@@ -32,9 +32,12 @@ bool Drama::operator<(const Movie &movie)const {
     }
     return false;
 }
-      
+     
 std::string Drama::getHashKey() {
-    return director + title;
+    if (hashKey.empty()) {
+        hashKey = director + " " + title;
+            }
+    return hashKey;
 }
 
 std::istream& Drama::setData(std::istream &stream)
