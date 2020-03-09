@@ -1,9 +1,10 @@
-//
-//  HashNode.cpp
-//  Movies
-//
-//  Created by Francisco Sanchez on 3/7/20.
-//  Copyright © 2020 Francisco Sanchez. All rights reserved.
-//
+// ------------------------------------------------HashNode.cpp -------------------------------------------------------
+// Andrea Shirley-Bellande & Diana Gutierrez , 343C
+// Created: March 6, 2020
+// Last Modified:
+// --------------------------------------------------------------------------------------------------------------------
+// Purpose: 
+// -------------------------------------------------------------------------------------------------------------------- // Notes on specifications, special algorithms, and assumptions. 
+// -------------------------------------------------------------------------------------------------------------------- 
 
-#include "HashNode.hpp"
+#include "HashNode.h"

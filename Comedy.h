@@ -1,10 +1,11 @@
-//
-//  Comedy.h
-//  Assignment4
-//
-//  Created by Diana Gutierrez on 3/6/20.
-//  Copyright © 2020 Diana Gutierrez. All rights reserved.
-//
+// ------------------------------------------------Comedy.h -------------------------------------------------------
+// Andrea Shirley-Bellande & Diana Gutierrez , 343C
+// Created: March 6, 2020
+// Last Modified:
+// --------------------------------------------------------------------------------------------------------------------
+// Purpose: 
+// -------------------------------------------------------------------------------------------------------------------- // Notes on specifications, special algorithms, and assumptions. 
+// -------------------------------------------------------------------------------------------------------------------- 
 
 #ifndef Comedy_h
 #define Comedy_h
@@ -12,19 +13,19 @@
 #include "Movie.h"
 using namespace std;
 
-class Comedy: public Movie {
-    
+class Comedy : public Movie {
+
 public:
     Comedy();
     Comedy(const string&, const string&, const int&); // constructor
-    std::istream& setData(std::istream &stream);
+    std::istream& setData(std::istream& stream);
     static const char TYPE = 'F'; // movieType
-    
+
 protected:
     bool operator==(const Movie&) const;
     bool operator!=(const Movie&) const;
     bool operator>(const Movie&) const;
     bool operator<(const Movie&)const;
-    std::ostream& toOutput(std::ostream &) const;
+    std::ostream& toOutput(std::ostream&) const;
 };
 #endif /* Comedy_h */
