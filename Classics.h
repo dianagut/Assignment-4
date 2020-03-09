@@ -3,9 +3,10 @@
 // Created: March 6, 2020
 // Last Modified:
 // --------------------------------------------------------------------------------------------------------------------
-// Purpose: 
-// -------------------------------------------------------------------------------------------------------------------- // Notes on specifications, special algorithms, and assumptions. 
-// -------------------------------------------------------------------------------------------------------------------- 
+// Purpose:
+// --------------------------------------------------------------------------------------------------------------------
+// Notes on specifications, special algorithms, and assumptions.
+// --------------------------------------------------------------------------------------------------------------------
 
 #ifndef Classics_h
 #define Classics_h
@@ -22,13 +23,11 @@ public:
 
     std::istream& setData(std::istream& stream);
     static const char TYPE = 'C'; // movieType
-
-protected:
-    bool operator==(const Movie&) const;
-    bool operator!=(const Movie&) const;
-    bool operator>(const Movie&) const;
+    
+    std::string getHashKey() ;
     bool operator<(const Movie&)const;
-
+    bool operator==(const Movie& ) const;
+protected:
     int month; // release date
     string majorActor; // first name, last name
 

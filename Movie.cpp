@@ -4,10 +4,10 @@
 // Last Modified:
 // --------------------------------------------------------------------------------------------------------------------
 // Purpose: 
-// -------------------------------------------------------------------------------------------------------------------- // Notes on specifications, special algorithms, and assumptions. 
+// --------------------------------------------------------------------------------------------------------------------
+// Notes on specifications, special algorithms, and assumptions.
 // -------------------------------------------------------------------------------------------------------------------- 
 
-#include <stdio.h>
 #include "Movie.h"
 #include <iostream>
 #include <string>
@@ -16,6 +16,7 @@
 #include "Drama.h"
 #include "Comedy.h"
 #include "Classics.h"
+#include "StringUtils.h"
 using namespace std;
 
 Movie::Movie(char type) {
@@ -26,41 +27,15 @@ Movie::Movie(char type) {
     stock = 0;
 }
 
-
-Movie* Movie::fromLine(string line)
-{
-    Movie* answer = NULL;
-    if (line.length() > 0) {
-        std::istringstream iss(line);
-        std::string type;
-        iss >> type;
-        switch (type[0]) {
-        case 'D':
-            answer = new Drama();
-            break;
-        case 'C':
-            answer = new Classics();
-            break;
-        case 'F':
-            answer = new Comedy();
-            break;
-        default:
-            cout << "Movie type " << line[0] << " not recognized";
-        }
-        if (answer) {
-            answer->setData(iss);
-        }
-    }
-    return answer;
-}
-
 std::istream& Movie::setData(std::istream& stream)
 {
     std::string temp;
     getline(stream, temp, ',');
     stock = std::stoi(temp);
-    getline(stream, director, ',');
-    getline(stream, title, ',');
+    getline(stream, temp, ',');
+    director = StringUtils::trim(temp);
+    getline(stream, temp, ',');
+    title = StringUtils::trim(temp);
     return stream;
 }
 
@@ -92,6 +67,25 @@ bool Movie::descreaseStock(int subtract) {
     return true;
 }
 
+bool Movie::operator<(const Movie &movie) const {
+    return movieType < movie.movieType;
+}
+
+bool Movie::operator>(const Movie& movie) const {
+    return !(*this < movie);
+}
+
+bool Movie::operator==(const Movie& movie) const {
+    return movieType == movie.movieType &&
+    director == movie.director &&
+    title == movie.title &&
+    releaseYear == movie.releaseYear;
+}
+
+bool Movie::operator!=(const Movie& movie)const {
+    return !(*this == movie);
+}
+
 std::ostream& Movie::toOutput(std::ostream& output) const {
     output << movieType << ", " << stock << ", " << director << ", " << title;
     return output;
@@ -99,21 +93,4 @@ std::ostream& Movie::toOutput(std::ostream& output) const {
 
 ostream& operator<<(ostream& output, const Movie& m) {
     return m.toOutput(output);
-}
-
-std::string& Movie::ltrim(std::string& str, const std::string& chars)
-{
-    str.erase(0, str.find_first_not_of(chars)); 
-    return str;
-}
-
-std::string& Movie::rtrim(std::string& str, const std::string& chars)
-{
-    str.erase(str.find_last_not_of(chars) + 1);
-    return str;
-}
-
-std::string& Movie::trim(std::string& str, const std::string& chars)
-{
-    return ltrim(rtrim(str, chars), chars);
 }

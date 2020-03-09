@@ -4,7 +4,8 @@
 // Last Modified:
 // --------------------------------------------------------------------------------------------------------------------
 // Purpose: 
-// -------------------------------------------------------------------------------------------------------------------- // Notes on specifications, special algorithms, and assumptions. 
+// --------------------------------------------------------------------------------------------------------------------
+// Notes on specifications, special algorithms, and assumptions. 
 // -------------------------------------------------------------------------------------------------------------------- 
 
 #include "HashMap.h"
@@ -92,4 +93,8 @@ void HashMap::remove(const std::string& key) {
         }
         delete entry;
     }
+}
+
+unsigned long HashMap::hashFunc(const std::string& k) const {
+    return std::hash<std::string>()(k) % TABLE_SIZE;
 }

@@ -4,7 +4,8 @@
 // Last Modified:
 // --------------------------------------------------------------------------------------------------------------------
 // Purpose: 
-// -------------------------------------------------------------------------------------------------------------------- // Notes on specifications, special algorithms, and assumptions. 
+// --------------------------------------------------------------------------------------------------------------------
+// Notes on specifications, special algorithms, and assumptions. 
 // -------------------------------------------------------------------------------------------------------------------- 
 
 #include <string>
@@ -22,37 +23,30 @@ Drama::Drama(const string& director, const string& title, const int& year) : Mov
     releaseYear = year;
 }
 
-std::istream& Drama::setData(std::istream& stream)
+bool Drama::operator<(const Movie &movie)const {
+    try {
+        const Drama& other = static_cast<const Drama&>(movie);
+        return director < other.director && title < other.title;
+    } catch (const std::bad_cast& e) {
+        return Movie::operator<(movie);
+    }
+    return false;
+}
+     
+std::string Drama::getHashKey() {
+    if (hashKey.empty()) {
+        hashKey = director + " " + title;
+    }
+    return hashKey;
+}
+
+std::istream& Drama::setData(std::istream &stream)
 {
     Movie::setData(stream);
     std::string temp;
     getline(stream, temp, ',');
     releaseYear = std::stoi(temp);
     return stream;
-}
-
-bool Drama::operator<(const Movie& movie)const {
-    const Drama& dramaCast = static_cast<const Drama&>(movie);
-
-    if (this->director < dramaCast.director && this->title < dramaCast.title && this->releaseYear < dramaCast.releaseYear)
-        return true;
-    return false;
-}
-
-bool Drama::operator>(const Movie& movie)const {
-    return !(*this < movie);
-}
-
-bool Drama::operator==(const Movie& movie)const {
-    const Drama& dramaCast = static_cast<const Drama&>(movie);
-
-    if (this->director == dramaCast.director && this->title == dramaCast.title && this->releaseYear == dramaCast.releaseYear)
-        return true;
-    return false;
-}
-
-bool Drama::operator!=(const Movie& movie)const {
-    return !(*this == movie);
 }
 
 std::ostream& Drama::toOutput(std::ostream& output) const {
