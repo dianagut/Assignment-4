@@ -9,3 +9,7 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 #include "Inventory.h"
+
+void Inventory::processTransaction(StoreInventory *inventory, CustomerStorage* customers) {
+    std::cout << *inventory << "\n";
+}

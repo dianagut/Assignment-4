@@ -15,7 +15,7 @@
 #include <string>
 #include "Movie.h"
 
-const int TABLE_SIZE = 200;
+const int TABLE_SIZE = 100;
 
 template <typename K, typename V>
 class HashNode {

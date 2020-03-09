@@ -30,7 +30,7 @@ public:
   //  bool transaction(char, Movie*); // adds transaction to customer history
 
     // getter methods
-    string getID() const;
+    int getID() const;
     string getName() const;
     string getFirst() const; // getFirstName()
     string getLast() const;  // getLastName()
@@ -38,7 +38,7 @@ public:
     bool setData(istream&);
 
 private:
-    string customerID;
+    int customerID;
     string firstName;
     string lastName;
 };

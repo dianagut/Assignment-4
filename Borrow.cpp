@@ -9,3 +9,6 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 #include "Borrow.h"
+
+void Borrow::processTransaction(StoreInventory* inventory, CustomerStorage* customers) {
+}

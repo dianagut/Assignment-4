@@ -14,7 +14,7 @@ using namespace std;
 Customer::Customer() {
     firstName = "";
     lastName = "";
-    customerID = "";
+    customerID = 0;
 }
 
 Customer::Customer(string first, string last, int ID) {
@@ -27,7 +27,7 @@ Customer::~Customer() {
 
 }
 
-std::string Customer::getID()const {
+int Customer::getID()const {
     return customerID;
 }
 
@@ -49,7 +49,9 @@ ostream & operator<<(ostream &output, const Customer &cust) {
 }
 
 bool Customer::setData(istream& infile) {
-    std::getline(infile, customerID, ' ');
+    std::string temp;
+    std::getline(infile, temp, ' ');
+    customerID = std::stoi(temp);
     std::getline(infile, firstName, ' ');
     std::getline(infile, lastName);
     return !infile.eof();       // eof function is true when eof char is read

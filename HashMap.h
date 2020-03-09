@@ -12,6 +12,7 @@
 #define HashMap_hpp
 
 #include <string>
+#include <vector>
 #include "Movie.h"
 #include "HashNode.h"
 
@@ -53,7 +54,7 @@ public:
         }
         return false;
     }
-
+    
     void put(const K &key, const V &value) {
         unsigned long hashValue = hashFunc(key);
         HashNode<K, V> *prev = NULL;
@@ -101,6 +102,18 @@ public:
             }
             delete entry;
         }
+    }
+    
+    std::vector<K> getKeys() const {
+        std::vector<K> keys;
+        for(int i = 0; i < TABLE_SIZE; i++) {
+            HashNode<K, V> *entry = table[i];
+            while(entry) {
+                keys.push_back(entry->getKey());
+                entry = entry->getNext();
+            }
+        }
+        return keys;
     }
 
 private:

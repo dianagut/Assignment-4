@@ -18,21 +18,17 @@
 #include <sstream>
 #include "HashMap.h"
 #include "StoreInventory.h"
-#include "Customer.h"
+#include "CustomerStorage.h"
 
 class Store {
 public:
-    Store(std::string, std::string);
-private:
-    struct CustomerHash {
-        unsigned long operator()(const int& k) const
-        {
-            return k % TABLE_SIZE;
-        }
-    };
+    Store();
     void loadMovies(std::string);
     void loadCustomers(std::string);
-    HashMap<int, Customer*, CustomerHash> customers;
+    void runCommands(std::string);
+    
+private:
+    CustomerStorage customers;
     StoreInventory inventory;
 };
 #endif /* Store_hpp */

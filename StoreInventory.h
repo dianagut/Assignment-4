@@ -20,8 +20,8 @@ class StoreInventory {
     friend ostream& operator<<(ostream& output, const StoreInventory& inv);
 public:
     StoreInventory();
+    ~StoreInventory();
     void addItem(Movie*);
-    std::vector<char> getTypes() { return types; }
 
 private:
     struct MovieHash {

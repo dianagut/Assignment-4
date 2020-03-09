@@ -11,6 +11,8 @@
 #include "Customer.h"
 #include <string>
 #include <sstream>
+#include "StoreInventory.h"
+#include "CustomerStorage.h"
 using namespace std;
 
 #ifndef Transaction_h
@@ -20,9 +22,9 @@ class Transaction
 public:
 	Transaction();
 	virtual ~Transaction();
-	virtual void processTransaction();
+	virtual void processTransaction(StoreInventory*, CustomerStorage*);
 	virtual bool customerCheck(Customer* customer, int ID);
-
+    virtual void setData(std::string);
 
 protected:
 	char Type;

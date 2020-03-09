@@ -14,6 +14,7 @@
 #include "transaction.h"
 
 class Inventory : public Transaction {
-    
+public:
+    void processTransaction(StoreInventory*, CustomerStorage*);
 };
 #endif
