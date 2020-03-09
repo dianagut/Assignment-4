@@ -17,41 +17,42 @@
 
 const int TABLE_SIZE = 200;
 
+template <typename K, typename V>
 class HashNode {
 public:
-    HashNode(const std::string& key, Movie* value) :
-        key(key), value(value), next(NULL) {
+    HashNode(const K &key, const V &value) :
+    key(key), value(value), next(NULL) {
     }
 
-    std::string getKey() const {
+    K getKey() const {
         return key;
     }
 
-    Movie* getValue() const {
+    V getValue() const {
         return value;
     }
 
-    void setValue(Movie* value) {
+    void setValue(V value) {
         HashNode::value = value;
     }
 
-    HashNode* getNext() const {
+    HashNode *getNext() const {
         return next;
     }
 
-    void setNext(HashNode* next) {
+    void setNext(HashNode *next) {
         HashNode::next = next;
     }
 
 private:
     // key-value pair
-    std::string key;
-    Movie* value;
+    K key;
+    V value;
     // next bucket with the same key
-    HashNode* next;
+    HashNode *next;
 };
 
-
+// Default hash function class
 template <typename K>
 struct KeyHash {
     unsigned long operator()(const K& key) const

@@ -24,13 +24,20 @@ public:
     std::vector<char> getTypes() { return types; }
 
 private:
+    struct MovieHash {
+        unsigned long operator()(const std::string& k) const
+        {
+            return std::hash<std::string>()(k) % TABLE_SIZE;
+        }
+    };
+    
     void insertSorted(Movie *movie);
     int typeToIndex(char movieType);
     ostream& outSorted(ostream& output) const;
     
     static const int MAX_TYPES = 10;
     std::vector<char> types;
-    HashMap movies;
+    HashMap<std::string, Movie*, MovieHash> movies;
     int sortedCount[MAX_TYPES];
     Movie* sorted[MAX_TYPES][100];
     int maxMovieTypes;
