@@ -1,4 +1,4 @@
-// ----------------------------------------------- HistoryCommand.cpp -------------------------------------------------
+// ------------------------------------------ BorrowCommand.h -------------------------------------------------------
 // Andrea Shirley-Bellande & Diana Gutierrez , 343C
 // Created: March 6, 2020
 // Last Modified:
@@ -8,4 +8,11 @@
 // Notes on specifications, special algorithms, and assumptions.
 // --------------------------------------------------------------------------------------------------------------------
 
-#include "HistoryCommand.h"
+#ifndef Borrow_h
+#define Borrow_h
+#include "transaction.h"
+
+class Borrow : public Transaction {
+    
+};
+#endif

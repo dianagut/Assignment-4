@@ -22,16 +22,16 @@ Transaction* TransactionFactory::createTransaction(char& answer)
     switch (answer)
     {
     case 'B':
-        transaction = new BorrowCommand();
+        transaction = new Borrow();
         break;
     case 'R':
-        transaction = new ReturnCommand();
+        transaction = new Return();
         break;
     case 'H':
-        transaction = new HistoryCommand();
+        transaction = new History();
         break;
     case 'T':
-        transaction = new InventoryCommand();
+        transaction = new Inventory();
         break;
     default:
         transaction = NULL;

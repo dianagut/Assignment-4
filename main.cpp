@@ -15,7 +15,7 @@
 #include <sstream>
 #include "Movie.h"
 #include <vector>
-#include "Inventory.h"
+#include "StoreInventory.h"
 #include "MovieFactory.h"
 
 Movie **movies = new Movie*[50];
@@ -38,7 +38,7 @@ void insert(Movie *movie) {
 int main(int argc, const char * argv[]) {
     std::ifstream infile("data4movies.txt");
     std::string line;
-    Inventory inv;
+    StoreInventory inv;
     
     while (std::getline(infile, line))
     {
