@@ -12,5 +12,8 @@
 #include "Store.h"
 
 int main(int argc, const char * argv[]) {
-    Store store("data4movies.txt", "data4customers.txt");// = new Store("data4movies.txt", "data4customers.txt");
+    Store store;
+    store.loadMovies("data4movies.txt");
+    store.loadCustomers("data4customers.txt");
+    store.runCommands("data4commands.txt");
 }

@@ -22,7 +22,11 @@
 
 class Store {
 public:
-    Store(std::string, std::string);
+    Store();
+    void loadMovies(std::string);
+    void loadCustomers(std::string);
+    void runCommands(std::string);
+    
 private:
     struct CustomerHash {
         unsigned long operator()(const int& k) const
@@ -30,8 +34,6 @@ private:
             return k % TABLE_SIZE;
         }
     };
-    void loadMovies(std::string);
-    void loadCustomers(std::string);
     HashMap<int, Customer*, CustomerHash> customers;
     StoreInventory inventory;
 };

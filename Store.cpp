@@ -11,18 +11,14 @@
 #include "Store.h"
 #include "MovieFactory.h"
 
-Store::Store(std::string moviesFile, std::string customersFile) {
-    if (moviesFile.empty()) {
-        throw std::invalid_argument("moviesFile was not provided");
-    }
-    if (customersFile.empty()) {
-        throw std::invalid_argument("customersfile was not provided");
-    }
-    loadMovies(moviesFile);
-    loadCustomers(customersFile);
+Store::Store() {
+
 }
 
 void Store::loadMovies(std::string fileName) {
+    if (fileName.empty()) {
+        throw std::invalid_argument("moviesFile was not provided");
+    }
     std::ifstream infile(fileName);
     std::string line;
     
@@ -37,13 +33,31 @@ void Store::loadMovies(std::string fileName) {
 }
 
 void Store::loadCustomers(std::string fileName) {
+    if (fileName.empty()) {
+        throw std::invalid_argument("customersfile was not provided");
+    }
     std::ifstream infile(fileName);
     std::string line;
     
     while (std::getline(infile, line))
     {
-        Customer c;
-        c.setData(infile);
+        Customer *c = new Customer();
+        c->setData(infile);
+        customers.put(c->getID(), c);
+    }
+    
+    infile.close();
+}
+
+void Store::runCommands(std::string filename) {
+    if (filename.empty()) {
+        throw std::invalid_argument("commandsFile was not provided");
+    }
+    std::ifstream infile(filename);
+    std::string line;
+    
+    while (std::getline(infile, line))
+    {
     }
     
     infile.close();
