@@ -8,7 +8,7 @@
 // -------------------------------------------------------------------------------------------------------------------- 
 
 #include "Movie.h"
-#include "customer.h"
+#include "Customer.h"
 #include <string>
 #include <sstream>
 using namespace std;

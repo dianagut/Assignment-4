@@ -4,12 +4,13 @@
 // Last Modified:
 // --------------------------------------------------------------------------------------------------------------------
 // Purpose:
-// -------------------------------------------------------------------------------------------------------------------- // Notes on specifications, special algorithms, and assumptions. 
+// --------------------------------------------------------------------------------------------------------------------
+// Notes on specifications, special algorithms, and assumptions.
 // -------------------------------------------------------------------------------------------------------------------- 
 
 
 
-/*#include "transactionFactory.h"
+#include "transactionFactory.h"
 
 
 using namespace std;
@@ -21,21 +22,20 @@ Transaction* TransactionFactory::createTransaction(char& answer)
     switch (answer)
     {
     case 'B':
-        transaction = new Borrow();
+        transaction = new BorrowCommand();
         break;
     case 'R':
-        transaction = new Return();
+        transaction = new ReturnCommand();
         break;
     case 'H':
-        transaction = new History();
+        transaction = new HistoryCommand();
         break;
     case 'T':
-        transaction = new Inventory();
+        transaction = new InventoryCommand();
         break;
     default:
         transaction = NULL;
         break;
     }
     return transaction;
-}*/
- 
+}

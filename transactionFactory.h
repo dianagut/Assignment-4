@@ -12,9 +12,10 @@
 
 #include "Inventory.h"
 #include "transaction.h"
-//#include "borrow.h"
-//#include "return"
-//#include "history"
+#include "BorrowCommand.h"
+#include "HistoryCommand.h"
+#include "InventoryCommand.h"
+#include "ReturnCommand.h"
 
 using namespace std;
 
