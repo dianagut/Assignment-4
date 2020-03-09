@@ -38,6 +38,12 @@ void StoreInventory::addItem(Movie* m) {
     }
 }
 
+Movie* StoreInventory::findItem(std::string key) {
+    Movie *m = NULL;
+    movies.get(key, m);
+    return m;
+}
+
 int StoreInventory::typeToIndex(char movieType) {
     switch(movieType) {
         case 'C':

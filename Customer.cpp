@@ -56,3 +56,11 @@ bool Customer::setData(istream& infile) {
     std::getline(infile, lastName);
     return !infile.eof();       // eof function is true when eof char is read
 }
+
+void Customer::storeHistory(char t) {
+   // TBD
+}
+
+void Customer::showHistory(ostream &output) {
+   // TBD
+}

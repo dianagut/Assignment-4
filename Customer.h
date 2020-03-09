@@ -14,7 +14,7 @@
 #include <string>
 #include <iostream>
 #include <fstream>
-#include <string> 
+#include <string>
 
 using namespace std;
 
@@ -36,11 +36,14 @@ public:
     string getLast() const;  // getLastName()
 
     bool setData(istream&);
+    void storeHistory(char);
+    void showHistory(ostream &);
 
 private:
     int customerID;
     string firstName;
     string lastName;
+    int txCount = 0;
 };
 
 #endif

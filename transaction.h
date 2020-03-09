@@ -20,11 +20,11 @@ using namespace std;
 class Transaction
 {
 public:
-	Transaction();
+	Transaction(char);
 	virtual ~Transaction();
 	virtual void processTransaction(StoreInventory*, CustomerStorage*);
 	virtual bool customerCheck(Customer* customer, int ID);
-    virtual void setData(std::string);
+    virtual std::istream& setData(std::istream& stream);
 
 protected:
 	char Type;

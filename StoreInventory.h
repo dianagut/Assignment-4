@@ -22,6 +22,7 @@ public:
     StoreInventory();
     ~StoreInventory();
     void addItem(Movie*);
+    Movie* findItem(std::string);
 
 private:
     struct MovieHash {
