@@ -11,6 +11,7 @@
 #include <fstream>
 #include <sstream>
 #include <vector>
+#include <typeinfo>
 #include "Classics.h"
 
 Classics::Classics() : Movie(Classics::TYPE){
@@ -25,16 +26,18 @@ Classics::Classics(const string& director, const string& title, const string& ma
     releaseYear = year;
 }
 
-std::vector<std::string> split(const std::string& s, char delimiter)
-{
-   std::vector<std::string> tokens;
-   std::string token;
-   std::istringstream tokenStream(s);
-   while (std::getline(tokenStream, token, delimiter))
-   {
-      tokens.push_back(token);
-   }
-   return tokens;
+std::string Classics::getHashKey() {
+    return std::to_string(month) + std::to_string(releaseYear) + majorActor;
+}
+
+bool Classics::operator<(const Movie &movie)const {
+    try {
+        const Classics& other = static_cast<const Classics&>(movie);
+        return month < other.month && releaseYear < other.releaseYear && majorActor < other.majorActor;
+    } catch (const std::bad_cast& e) {
+        return Movie::operator<(movie);
+    }
+    return false;
 }
 
 std::istream& Classics::setData(std::istream &stream)
@@ -42,39 +45,15 @@ std::istream& Classics::setData(std::istream &stream)
     Movie::setData(stream);
     std::string temp ;
     getline(stream, temp);
-    vector<string> pieces = split(trim(temp), ' ');
+    vector<string> pieces = StringUtils::split(StringUtils::trim(temp), ' ');
     majorActor = pieces[0] + " " + pieces[1];
     month = std::stoi(pieces[2]);
     releaseYear = std::stoi(pieces[3]);
     return stream;
 }
 
-bool Classics::operator<(const Movie &movie)const{
-    const Classics& classicsCast = static_cast<const Classics&>(movie);
-    
-    if(this->director < classicsCast.director && this->title < classicsCast.title && this->majorActor < classicsCast.majorActor && this-> releaseYear < classicsCast.releaseYear)
-        return true;
-    return false;
-}
-
-bool Classics::operator>(const Movie& movie)const{
-    return !(*this < movie);
-}
-
-bool Classics::operator==(const Movie& movie)const{
-     const Classics& classicsCast = static_cast<const Classics&>(movie);
-    
-    if(this->director == classicsCast.director && this->title == classicsCast.title && this -> majorActor < classicsCast.majorActor && this-> releaseYear == classicsCast.releaseYear)
-        return true;
-    return false;
-}
-
-bool Classics::operator!=(const Movie& movie)const{
-    return !(*this == movie);
-}
-
 std::ostream & Classics::toOutput(std::ostream &output) const {
     Movie::toOutput(output);
-    output << ", " << month << " " << releaseYear;
+    output << ", " << majorActor << ", " << month << " " << releaseYear;
     return output;
 }

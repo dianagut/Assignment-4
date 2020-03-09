@@ -18,12 +18,9 @@ public:
     Drama(const string&, const string&, const int&); // constructor
     std::istream& setData(std::istream &stream);
     static const char TYPE = 'D'; // movieType
-    
-protected:
-    bool operator==(const Movie&) const;
-    bool operator!=(const Movie&) const;
-    bool operator>(const Movie&) const;
     bool operator<(const Movie&)const;
+    std::string getHashKey() ;
+protected:
     std::ostream& toOutput(std::ostream &) const;
 };
 

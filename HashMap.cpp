@@ -89,3 +89,7 @@ void HashMap::remove(const std::string &key) {
         delete entry;
     }
 }
+
+unsigned long HashMap::hashFunc(const std::string& k) const {
+    return std::hash<std::string>()(k) % TABLE_SIZE;
+}

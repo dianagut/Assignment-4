@@ -25,8 +25,6 @@ public:
 private:
     // hash table
     HashNode **table;
-    unsigned long hashFunc(const std::string& k) const {
-        return k.length() % TABLE_SIZE;
-    }
+    unsigned long hashFunc(const std::string& k) const ;
 };
 #endif /* HashMap_hpp */

@@ -9,6 +9,7 @@
 #ifndef Movie_h
 #define Movie_h
 #include <string>
+#include "StringUtils.hpp"
 using namespace std;
 
  class Movie {
@@ -29,10 +30,10 @@ using namespace std;
      virtual bool descreaseStock(int);
      
      // overloaded functions
-     bool operator==(const Movie*) const;
-     bool operator!=(const Movie*) const;
-     bool operator>(const Movie*) const;
-     bool operator<(const Movie*)const;
+     virtual bool operator==(const Movie&) const;
+     virtual bool operator!=(const Movie&) const;
+     virtual bool operator>(const Movie&) const;
+     virtual bool operator<(const Movie&)const;
      
      char getMovieType() { return movieType; }
      static Movie* fromLine(std::string);
@@ -42,6 +43,7 @@ using namespace std;
      string getDirector() { return director; }
      int getStock() { return stock; }
      int getReleaseYear() { return releaseYear; }
+     virtual std::string getHashKey() { return title; }
  protected:
      Movie(char); // constructor
      virtual std::ostream& toOutput(std::ostream &) const;
@@ -52,10 +54,7 @@ using namespace std;
      string title;
      int releaseYear;
 
-     std::string& ltrim(std::string& str, const std::string& chars = "\t\n\v\f\r ");
-     std::string& rtrim(std::string& str, const std::string& chars = "\t\n\v\f\r ");
-     std::string& trim(std::string& str, const std::string& chars = "\t\n\v\f\r ");
-
+     std::string hashKey = "";
  };
 
 #endif /* Movie_h */

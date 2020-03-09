@@ -44,7 +44,8 @@ Movie* Movie::fromLine(string line)
                 answer = new Comedy();
                 break;
             default:
-                cout << "Movie type " << line[0] << " not recognized";
+                cout << "Movie type " << line[0] << " not recognized:\n";
+                cout << "\t-> " << line << '\n';
         }
         if (answer) {
             answer->setData(iss);
@@ -58,8 +59,10 @@ std::istream& Movie::setData(std::istream &stream)
     std::string temp;
     getline(stream, temp, ',');
     stock = std::stoi(temp);
-    getline(stream, director, ',');
-    getline(stream, title, ',');
+    getline(stream, temp, ',');
+    director = StringUtils::trim(temp);
+    getline(stream, temp, ',');
+    title = StringUtils::trim(temp);
     return stream;
 }
 
@@ -77,18 +80,34 @@ void Movie::createMovie(string &data) {
     stringstream(temp) >> releaseYear;
 }
 
-bool Movie::increaseStock(int add){
+bool Movie::increaseStock(int add) {
     if(stock < 0)
         return false;
     stock += add;
     return true;
 }
 
-bool Movie::descreaseStock(int subtract){
+bool Movie::descreaseStock(int subtract) {
     if(stock <= 0)
         return false;
     stock -= subtract;
     return true;
+}
+
+bool Movie::operator<(const Movie &movie) const {
+    return movieType < movie.movieType;
+}
+
+bool Movie::operator>(const Movie& movie) const {
+    return !(*this < movie);
+}
+
+bool Movie::operator==(const Movie& movie) const {
+    return (this->director == movie.director);// && this->title == movie.title && this->releaseYear == movie.releaseYear );
+}
+
+bool Movie::operator!=(const Movie& movie) const{
+    return !(*this == movie);
 }
 
 std::ostream & Movie::toOutput(std::ostream & output) const {
@@ -98,21 +117,4 @@ std::ostream & Movie::toOutput(std::ostream & output) const {
 
 ostream& operator<<(ostream& output, const Movie& m) {
     return m.toOutput(output);
-}
-
-std::string& Movie::ltrim(std::string& str, const std::string& chars)
-{
-    str.erase(0, str.find_first_not_of(chars));
-    return str;
-}
- 
-std::string& Movie::rtrim(std::string& str, const std::string& chars )
-{
-    str.erase(str.find_last_not_of(chars) + 1);
-    return str;
-}
- 
-std::string& Movie::trim(std::string& str, const std::string& chars )
-{
-    return ltrim(rtrim(str, chars), chars);
 }

@@ -21,6 +21,21 @@ Drama::Drama(const string& director, const string& title, const int& year) : Mov
     releaseYear = year;
 }
 
+
+bool Drama::operator<(const Movie &movie)const {
+    try {
+        const Drama& other = static_cast<const Drama&>(movie);
+        return director < other.director && title < other.title;
+    } catch (const std::bad_cast& e) {
+        return Movie::operator<(movie);
+    }
+    return false;
+}
+      
+std::string Drama::getHashKey() {
+    return director + title;
+}
+
 std::istream& Drama::setData(std::istream &stream)
 {
     Movie::setData(stream);
@@ -28,30 +43,6 @@ std::istream& Drama::setData(std::istream &stream)
     getline(stream, temp, ',');
     releaseYear = std::stoi(temp);
     return stream;
-}
-
-bool Drama::operator<(const Movie &movie)const{
-    const Drama& dramaCast = static_cast<const Drama&>(movie);
-    
-    if(this->director < dramaCast.director && this->title < dramaCast.title && this-> releaseYear < dramaCast.releaseYear)
-        return true;
-    return false;
-}
-
-bool Drama::operator>(const Movie& movie)const{
-    return !(*this < movie);
-}
-
-bool Drama::operator==(const Movie& movie)const{
-     const Drama& dramaCast = static_cast<const Drama&>(movie);
-    
-    if(this->director == dramaCast.director && this->title == dramaCast.title && this-> releaseYear == dramaCast.releaseYear)
-        return true;
-    return false;
-}
-
-bool Drama::operator!=(const Movie& movie)const{
-    return !(*this == movie);
 }
 
 std::ostream & Drama::toOutput(std::ostream &output) const {

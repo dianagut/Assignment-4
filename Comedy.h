@@ -9,6 +9,10 @@
 #ifndef Comedy_h
 #define Comedy_h
 #include <string>
+#include <string>
+#include <iostream>
+#include <fstream>
+#include <sstream>
 #include "Movie.h"
 using namespace std;
 
@@ -19,12 +23,9 @@ public:
     Comedy(const string&, const string&, const int&); // constructor
     std::istream& setData(std::istream &stream);
     static const char TYPE = 'F'; // movieType
-    
-protected:
-    bool operator==(const Movie&) const;
-    bool operator!=(const Movie&) const;
-    bool operator>(const Movie&) const;
     bool operator<(const Movie&)const;
+    std::string getHashKey() ;
+protected:
     std::ostream& toOutput(std::ostream &) const;
 };
 #endif /* Comedy_h */

@@ -22,15 +22,15 @@ public:
     std::istream& setData(std::istream &stream);
     static const char TYPE = 'C'; // movieType
     
-protected:
-    bool operator==(const Movie&) const;
-    bool operator!=(const Movie&) const;
-    bool operator>(const Movie&) const;
+    std::string getHashKey() ;
     bool operator<(const Movie&)const;
     
+protected:
+
     int month; // release date
     string majorActor; // first name, last name
     
     std::ostream& toOutput(std::ostream &) const;
+    
 };
 #endif /* Classics_h */
