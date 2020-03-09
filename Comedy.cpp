@@ -4,7 +4,8 @@
 // Last Modified:
 // --------------------------------------------------------------------------------------------------------------------
 // Purpose:
-// -------------------------------------------------------------------------------------------------------------------- // Notes on specifications, special algorithms, and assumptions.
+// --------------------------------------------------------------------------------------------------------------------
+// Notes on specifications, special algorithms, and assumptions.
 // --------------------------------------------------------------------------------------------------------------------
 
 #include "Comedy.h"
@@ -18,7 +19,7 @@ Comedy::Comedy(const string& director, const string& title, const int& year) : M
     releaseYear = year;
 }
 
-bool Comedy::operator<(const Movie &movie)const {
+bool Comedy::operator<(const Movie &movie) const {
     try {
         const Comedy& other = static_cast<const Comedy&>(movie);
         return title < other.title && releaseYear < other.releaseYear;

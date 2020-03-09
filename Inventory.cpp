@@ -3,27 +3,19 @@
 // Created: March 6, 2020
 // Last Modified:
 // --------------------------------------------------------------------------------------------------------------------
-// Purpose: 
-// -------------------------------------------------------------------------------------------------------------------- // Notes on specifications, special algorithms, and assumptions. 
-// -------------------------------------------------------------------------------------------------------------------- 
+// Purpose:
+// --------------------------------------------------------------------------------------------------------------------
+// Notes on specifications, special algorithms, and assumptions.
+// --------------------------------------------------------------------------------------------------------------------
 
-<<<<<<< HEAD
 #include <iostream>
-#include "Inventory.hpp"
+#include "Inventory.h"
 
 Inventory::Inventory() {
     for(int i= 0; i < MAX_TYPES; i++) {
         sortedCount[i] = 0;
     }
-    
-=======
-
-#include "Inventory.h"
-
-Inventory::Inventory()
-{
-
->>>>>>> 888d2ed62f8022b0126b4d6233bc04ad21e0482e
+    maxMovieTypes = 3;
 }
 void Inventory::addItem(Movie* m) {
     if (m) {

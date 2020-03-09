@@ -1,11 +1,13 @@
-<<<<<<< HEAD
-//
-//  main.cpp
-//  Assignment4
-//
-//  Created by Diana Gutierrez on 3/6/20.
-//  Copyright © 2020 Diana Gutierrez. All rights reserved.
-//
+// -------------------------------------------------- main.cpp --------------------------------------------------------
+// Andrea Shirley-Bellande & Diana Gutierrez , 343C
+// Created: March 6, 2020
+// Last Modified:
+// --------------------------------------------------------------------------------------------------------------------
+// Purpose:
+// --------------------------------------------------------------------------------------------------------------------
+// Notes on specifications, special algorithms, and assumptions.
+// --------------------------------------------------------------------------------------------------------------------
+
 
 #include <iostream>
 #include <fstream>
@@ -13,7 +15,8 @@
 #include <sstream>
 #include "Movie.h"
 #include <vector>
-#include "Inventory.hpp"
+#include "Inventory.h"
+#include "MovieFactory.h"
 
 Movie **movies = new Movie*[50];
 static int movieCount = 0;
@@ -39,7 +42,7 @@ int main(int argc, const char * argv[]) {
     
     while (std::getline(infile, line))
     {
-        Movie *m = Movie::fromLine(line);
+        Movie *m = MovieFactory::createMovieFromLine(line);
         if (m) {
             inv.addItem(m);
             insert(m);
@@ -48,29 +51,3 @@ int main(int argc, const char * argv[]) {
     
     std::cout << "Inventory:\n" << inv << "\n";
 }
-=======
-#include <iostream>
-#include <fstream>
-#include <string>
-#include <sstream>
-#include "Movie.h"
-#include <vector>
-#include "Inventory.h"
-using namespace std;
-
-int main() {
-    ifstream infile("data4movies.txt");
-    string line;
-    Inventory inv;
-
-    while (getline(infile, line))
-    {
-        Movie* m = Movie::fromLine(line);
-        if (m) {
-            inv.addItem(m);
-        }
-    }
-
-
-}
->>>>>>> 888d2ed62f8022b0126b4d6233bc04ad21e0482e

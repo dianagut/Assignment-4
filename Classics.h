@@ -4,7 +4,8 @@
 // Last Modified:
 // --------------------------------------------------------------------------------------------------------------------
 // Purpose:
-// -------------------------------------------------------------------------------------------------------------------- // Notes on specifications, special algorithms, and assumptions.
+// --------------------------------------------------------------------------------------------------------------------
+// Notes on specifications, special algorithms, and assumptions.
 // --------------------------------------------------------------------------------------------------------------------
 
 #ifndef Classics_h
@@ -25,13 +26,8 @@ public:
     
     std::string getHashKey() ;
     bool operator<(const Movie&)const;
-
+    bool operator==(const Movie& ) const;
 protected:
-    bool operator==(const Movie&) const;
-    bool operator!=(const Movie&) const;
-    bool operator>(const Movie&) const;
-    bool operator<(const Movie&)const;
-
     int month; // release date
     string majorActor; // first name, last name
 

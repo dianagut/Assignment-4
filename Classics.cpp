@@ -4,7 +4,8 @@
 // Last Modified:
 // --------------------------------------------------------------------------------------------------------------------
 // Purpose:
-// -------------------------------------------------------------------------------------------------------------------- // Notes on specifications, special algorithms, and assumptions.
+// --------------------------------------------------------------------------------------------------------------------
+// Notes on specifications, special algorithms, and assumptions.
 // --------------------------------------------------------------------------------------------------------------------
 
 #include <string>
@@ -40,6 +41,18 @@ bool Classics::operator<(const Movie &movie)const {
     }
     return false;
 }
+        
+
+bool Classics::operator==(const Movie& movie) const {
+    bool equals = Movie::operator==(movie);
+    try {
+        const Classics& classicsCast = static_cast<const Classics&>(movie);
+        equals &= majorActor == classicsCast.majorActor;
+    } catch (const std::bad_cast& e) {
+        return equals;
+    }
+    return equals;
+}
 
 std::istream& Classics::setData(std::istream& stream)
 {
@@ -51,17 +64,6 @@ std::istream& Classics::setData(std::istream& stream)
     month = std::stoi(pieces[2]);
     releaseYear = std::stoi(pieces[3]);
     return stream;
-}
-
-bool Classics::operator==(const Movie& movie) const {
-    bool equals = Movie::operator==(movie);
-    try {
-        const Classics& classicsCast = static_cast<const Classics&>(movie);
-        equals &= majorActor == classicsCast.majorActor;
-    } catch (const std::bad_cast& e) {
-        return equals;
-    }
-    return equals
 }
 
 std::ostream& Classics::toOutput(std::ostream& output) const {

@@ -1,13 +1,14 @@
-//
-//  StringUtils.cpp
-//  Movies
-//
-//  Created by Francisco Sanchez on 3/9/20.
-//  Copyright © 2020 Francisco Sanchez. All rights reserved.
-//
+// ------------------------------------------------StringUtils.cpp -------------------------------------------------------
+// Andrea Shirley-Bellande & Diana Gutierrez , 343C
+// Created: March 6, 2020
+// Last Modified:
+// --------------------------------------------------------------------------------------------------------------------
+// Purpose:
+// --------------------------------------------------------------------------------------------------------------------
+// Notes on specifications, special algorithms, and assumptions.
+// --------------------------------------------------------------------------------------------------------------------
 
-#include "StringUtils.hpp"
-
+#include "StringUtils.h"
 
 std::string& StringUtils::ltrim(std::string& str, const std::string& chars)
 {
