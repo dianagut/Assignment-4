@@ -1,4 +1,4 @@
-// ------------------------------------------------transaction.h -------------------------------------------------------
+// ------------------------------------------------transaction.cpp-------------------------------------------------------
 // Andrea Shirley-Bellande & Diana Gutierrez , 343C
 // Created: March 6, 2020
 // Last Modified:
@@ -7,21 +7,27 @@
 // -------------------------------------------------------------------------------------------------------------------- // Notes on specifications, special algorithms, and assumptions. 
 // -------------------------------------------------------------------------------------------------------------------- 
 
-#include "Movie.h"
-#include "customer.h"
+#include "transaction.h"
+#include <iostream>
 #include <string>
-#include <sstream>
+
 using namespace std;
 
-class Transaction
+Transaction::Transaction()
 {
-public:
-	Transaction();
-	virtual ~Transaction();
-	virtual void processTransaction();
-	virtual bool customerCheck(Customer* customer, int ID);
+}
 
+Transaction::~Transaction()
+{
+}
 
-protected:
-	char Type;
-};
+bool Transaction::customerCheck(Customer* customer, int ID)
+{
+	if (customer == NULL)
+	{
+		ostringstream temp;
+		temp << ID;
+		cout << "Customer ID: " << temp.str() << " doesn't exist." << endl;
+
+	}
+}

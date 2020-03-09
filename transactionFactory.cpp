@@ -33,6 +33,7 @@ Transaction* TransactionFactory::createTransaction(char& answer)
         transaction = new Inventory();
         break;
     default:
+        transaction = NULL;
         break;
     }
     return transaction;
