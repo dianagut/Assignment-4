@@ -21,7 +21,7 @@ Transaction::~Transaction()
 {
 }
 
-void Transaction::processTransaction()
+void Transaction::processTransaction(StoreInventory*, CustomerStorage*)
 {
 }
 
@@ -35,4 +35,8 @@ bool Transaction::customerCheck(Customer* customer, int ID)
 		return true;
 	}
 	return false;
+}
+
+void Transaction::setData(std::string) {
+    
 }

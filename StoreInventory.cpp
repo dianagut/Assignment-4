@@ -12,11 +12,25 @@
 #include "StoreInventory.h"
 
 StoreInventory::StoreInventory() {
-    for(int i= 0; i < MAX_TYPES; i++) {
-        sortedCount[i] = 0;
+    for(int mt= 0; mt < MAX_TYPES; mt++) {
+        sortedCount[mt] = 0;
+        for(int i = 0; i < sortedCount[mt]; i++) {
+            sorted[mt][i] = NULL;
+        }
     }
     maxMovieTypes = 3;
 }
+
+StoreInventory::~StoreInventory() {
+    for(int mt= 0; mt < MAX_TYPES; mt++) {
+        for(int i = 0; i < sortedCount[mt]; i++) {
+            if (sorted[mt][i]) {
+                delete sorted[mt][i];
+            }
+        }
+    }
+}
+
 void StoreInventory::addItem(Movie* m) {
     if (m) {
         movies.put(m->getHashKey(), m);

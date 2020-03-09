@@ -22,6 +22,7 @@ using namespace std;
 
 class TransactionFactory
 {
-	static Transaction* createTransaction(char&);
+public:
+	static Transaction* createTransaction(std::string);
 };
 

@@ -10,6 +10,7 @@
 
 #include "Store.h"
 #include "MovieFactory.h"
+#include "transactionFactory.h"
 
 Store::Store() {
 
@@ -43,7 +44,7 @@ void Store::loadCustomers(std::string fileName) {
     {
         Customer *c = new Customer();
         c->setData(infile);
-        customers.put(c->getID(), c);
+        customers.addCustomer(c);
     }
     
     infile.close();
@@ -58,6 +59,10 @@ void Store::runCommands(std::string filename) {
     
     while (std::getline(infile, line))
     {
+        Transaction *t = TransactionFactory::createTransaction(line);
+        if (t) {
+            t->processTransaction(&inventory, &customers);
+        }
     }
     
     infile.close();

@@ -18,7 +18,7 @@
 #include <sstream>
 #include "HashMap.h"
 #include "StoreInventory.h"
-#include "Customer.h"
+#include "CustomerStorage.h"
 
 class Store {
 public:
@@ -28,13 +28,7 @@ public:
     void runCommands(std::string);
     
 private:
-    struct CustomerHash {
-        unsigned long operator()(const int& k) const
-        {
-            return k % TABLE_SIZE;
-        }
-    };
-    HashMap<int, Customer*, CustomerHash> customers;
+    CustomerStorage customers;
     StoreInventory inventory;
 };
 #endif /* Store_hpp */
