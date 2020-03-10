@@ -9,8 +9,11 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 
-#include <typeinfo>
+#include <vector>
+#include <iterator>
+#include <algorithm>
 #include "Borrow.h"
+
 
 void Borrow::processTransaction(StoreInventory* inventory, CustomerStorage* customers) {
     Customer *c = customers->findCustomer(customerId);
