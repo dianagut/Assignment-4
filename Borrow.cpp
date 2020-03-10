@@ -8,6 +8,8 @@
 // Notes on specifications, special algorithms, and assumptions.
 // --------------------------------------------------------------------------------------------------------------------
 
+
+#include <typeinfo>
 #include "Borrow.h"
 
 void Borrow::processTransaction(StoreInventory* inventory, CustomerStorage* customers) {
