@@ -12,6 +12,7 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <typeinfo>
 #include "Drama.h"
 
 Drama::Drama() : Movie(Drama::TYPE) {
