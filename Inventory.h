@@ -17,5 +17,6 @@ class Inventory : public Transaction {
 public:
     Inventory() : Transaction('I') { }
     void processTransaction(StoreInventory*, CustomerStorage*);
+
 };
 #endif

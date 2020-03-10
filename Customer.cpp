@@ -57,10 +57,12 @@ bool Customer::setData(istream& infile) {
     return !infile.eof();       // eof function is true when eof char is read
 }
 
-void Customer::storeHistory(char t) {
-   // TBD
+void Customer::storeHistory(std::string command) {
+    history.push_back(command);
 }
 
 void Customer::showHistory(ostream &output) {
-   // TBD
+    output << "History for " << customerID << "\n ";
+    std::copy(history.begin(), history.end(), std::ostream_iterator<std::string>(output, " "));
+    output << "-- end of history --\n";
 }

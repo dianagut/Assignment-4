@@ -38,7 +38,6 @@ bool Transaction::customerCheck(Customer* customer, int ID)
 	return false;
 }
 
-std::istream& Transaction::setData(std::istream& stream)
-{
-    return stream;
+void Transaction::setData(std::string line) {
+    rawCommand = line;
 }

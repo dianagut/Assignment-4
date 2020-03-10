@@ -15,6 +15,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <vector>
 
 using namespace std;
 
@@ -36,14 +37,14 @@ public:
     string getLast() const;  // getLastName()
 
     bool setData(istream&);
-    void storeHistory(char);
+    void storeHistory(std::string);
     void showHistory(ostream &);
 
 private:
     int customerID;
     string firstName;
     string lastName;
-    int txCount = 0;
+    std::vector<std::string> history;
 };
 
 #endif

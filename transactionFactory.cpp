@@ -43,7 +43,7 @@ Transaction* TransactionFactory::createTransaction(std::string line)
             break;
         }
         if (transaction) {
-            transaction->setData(iss);
+            transaction->setData(line);
         }
     }
     return transaction;

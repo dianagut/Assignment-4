@@ -9,3 +9,14 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 #include "Return.h"
+
+void Return::processTransaction(StoreInventory*, CustomerStorage*) {
+    
+}
+
+void Return::setData(std::string line) {
+    Transaction::setData(line);
+    std::istringstream iss(line);
+    std::string temp;
+    iss >> temp;
+}

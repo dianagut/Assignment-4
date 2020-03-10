@@ -16,5 +16,8 @@
 class Return : public Transaction {
 public:
     Return() : Transaction('R') { }
+    void processTransaction(StoreInventory*, CustomerStorage*);
+    void setData(std::string);
+
 };
 #endif

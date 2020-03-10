@@ -8,4 +8,22 @@
 // Notes on specifications, special algorithms, and assumptions.
 // --------------------------------------------------------------------------------------------------------------------
 
+#include <iostream>
 #include "History.h"
+
+void History::processTransaction(StoreInventory*, CustomerStorage* customers) {
+    Customer *c = customers->findCustomer(customerId);
+    if (c) {
+        c->showHistory(std::cout);
+    } else {
+        cout << "Customer " << customerId << " was not found\n";
+    }
+}
+
+void History::setData(std::string line) {
+    Transaction::setData(line);
+    std::istringstream iss(line);
+    std::string temp;
+    iss >> temp;
+    iss >> customerId;
+}

@@ -26,20 +26,21 @@ void Borrow::processTransaction(StoreInventory* inventory, CustomerStorage* cust
         if (!m->descreaseStock(1)) {
             cout << "Not enough of " << movieData << "\n";
         }
-        c->storeHistory(Type);
+        c->storeHistory(rawCommand);
     } else {
         cout << "Customer " << customerId << " was not found\n";
     }
 }
 
-std::istream& Borrow::setData(std::istream& stream)
-{
+void Borrow::setData(std::string line) {
+    Transaction::setData(line);
+    std::istringstream iss(line);
     std::string temp;
-    stream >> customerId;
-    stream >> mediaType;
-    stream >> movieType;
-    std::getline(stream, movieData);
-    movieData.erase(remove(movieData.begin(), movieData.end(), ','), movieData.end()); //remove A from string
+    iss >> temp;
+    iss >> customerId;
+    iss >> mediaType;
+    iss >> movieType;
+    std::getline(iss, movieData);
+    movieData.erase(remove(movieData.begin(), movieData.end(), ','), movieData.end()); // remove , from string
     StringUtils::trim(movieData);
-    return stream;
 }
