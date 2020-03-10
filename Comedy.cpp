@@ -8,6 +8,7 @@
 // Notes on specifications, special algorithms, and assumptions.
 // --------------------------------------------------------------------------------------------------------------------
 
+#include <typeinfo>
 #include "Comedy.h"
 
 Comedy::Comedy() : Movie(Comedy::TYPE) {
