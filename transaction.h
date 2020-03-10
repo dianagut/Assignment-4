@@ -24,9 +24,12 @@ public:
 	virtual ~Transaction();
 	virtual void processTransaction(StoreInventory*, CustomerStorage*);
 	virtual bool customerCheck(Customer* customer, int ID);
-    virtual std::istream& setData(std::istream& stream);
+    virtual void setData(std::string);
+    int getCustomerId() { return customerId; }
 
 protected:
 	char Type;
+    int customerId = -1;
+    std::string rawCommand;
 };
 #endif

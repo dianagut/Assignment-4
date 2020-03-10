@@ -1,12 +1,12 @@
-// ------------------------------------------------HashMap.h -------------------------------------------------------
+// ----------------------------------------------- HashMap.h ----------------------------------------------------------
 // Andrea Shirley-Bellande & Diana Gutierrez , 343C
 // Created: March 6, 2020
 // Last Modified:
 // --------------------------------------------------------------------------------------------------------------------
-// Purpose: 
+// Purpose:
 // --------------------------------------------------------------------------------------------------------------------
 // Notes on specifications, special algorithms, and assumptions.
-// -------------------------------------------------------------------------------------------------------------------- 
+// --------------------------------------------------------------------------------------------------------------------
 
 #ifndef HashMap_hpp
 #define HashMap_hpp
@@ -18,7 +18,7 @@
 
 // https://medium.com/@aozturk/simple-hash-map-hash-table-implementation-in-c-931965904250
 // Hash map class template
-template <typename K, typename V, typename F = KeyHash<K>>
+template <typename K, typename V, typename F = KeyHash<K> >
 class HashMap {
 public:
     HashMap() {
@@ -54,7 +54,7 @@ public:
         }
         return false;
     }
-    
+
     void put(const K &key, const V &value) {
         unsigned long hashValue = hashFunc(key);
         HashNode<K, V> *prev = NULL;
@@ -103,7 +103,7 @@ public:
             delete entry;
         }
     }
-    
+
     std::vector<K> getKeys() const {
         std::vector<K> keys;
         for(int i = 0; i < TABLE_SIZE; i++) {
@@ -121,4 +121,12 @@ private:
     HashNode<K, V> **table;
     F hashFunc;
 };
-#endif 
+
+struct MovieHash {
+    unsigned long operator()(const std::string& k) const
+    {
+        return std::hash<std::string>()(k) % TABLE_SIZE;
+    }
+};
+
+#endif

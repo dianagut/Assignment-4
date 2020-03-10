@@ -9,3 +9,13 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 #include "Return.h"
+
+void Return::innerProcess(Movie* m , Customer* c) {
+    if (c->doReturn(m)) {
+        m->increaseStock(1);
+        c->storeHistory(rawCommand);
+    }
+    else {
+        std::cerr << m->getHashKey() << " can't be returned by customer " << c->getID() << "\n";
+    }
+}

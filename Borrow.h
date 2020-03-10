@@ -11,22 +11,11 @@
 #ifndef Borrow_h
 #define Borrow_h
 
-#include "transaction.h"
+#include "BorrowOrReturn.h"
 
-class Borrow : public Transaction {
+class Borrow : public BorrowOrReturn {
 public:
-    Borrow() : Transaction('B') { }
-    void processTransaction(StoreInventory*, CustomerStorage*);
-    int getCustomerId() { return customerId; }
-    char getMediaType() { return mediaType; }
-    char getMovieType() { return movieType; }
-    std::string getMovieData() { return movieData; }
-    std::istream& setData(std::istream& stream);
-    
-private:
-    int customerId;
-    char mediaType;
-    char movieType;
-    std::string movieData;
+    Borrow() : BorrowOrReturn('B') { }
+    void innerProcess(Movie*, Customer*);
 };
 #endif

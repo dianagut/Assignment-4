@@ -15,31 +15,11 @@
 #include "Borrow.h"
 
 
-void Borrow::processTransaction(StoreInventory* inventory, CustomerStorage* customers) {
-    Customer *c = customers->findCustomer(customerId);
-    if (c) {
-        Movie *m = inventory->findItem(movieData);
-        if (!m) {
-            cout << "Movie " << movieData << " was not found\n";
-            return;
-        }
-        if (!m->descreaseStock(1)) {
-            cout << "Not enough of " << movieData << "\n";
-        }
-        c->storeHistory(Type);
+void Borrow::innerProcess(Movie* m, Customer* c) {
+    if (!m->descreaseStock(1)) {
+        std::cerr << "Not enough of " << movieData << "\n";
     } else {
-        cout << "Customer " << customerId << " was not found\n";
+        c->storeHistory(rawCommand);
+        c->doBorrow(m);
     }
-}
-
-std::istream& Borrow::setData(std::istream& stream)
-{
-    std::string temp;
-    stream >> customerId;
-    stream >> mediaType;
-    stream >> movieType;
-    std::getline(stream, movieData);
-    movieData.erase(remove(movieData.begin(), movieData.end(), ','), movieData.end()); //remove A from string
-    StringUtils::trim(movieData);
-    return stream;
 }

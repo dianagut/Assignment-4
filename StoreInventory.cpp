@@ -53,7 +53,7 @@ int StoreInventory::typeToIndex(char movieType) {
         case 'F':
             return 2;
         default:
-            std::cout << "Error " << movieType << " is not supported";
+            std::cerr << "Error " << movieType << " is not supported";
     }
     return -1;
 }

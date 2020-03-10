@@ -16,5 +16,7 @@
 class History : public Transaction {
 public:
     History() : Transaction('H') { }
+    void processTransaction(StoreInventory*, CustomerStorage*);
+    void setData(std::string);
 };
 #endif

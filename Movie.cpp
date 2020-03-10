@@ -54,15 +54,15 @@ void Movie::createMovie(string& data) {
 }
 
 bool Movie::increaseStock(int add) {
-    if (stock < 0)
-        return false;
     stock += add;
     return true;
 }
 
 bool Movie::descreaseStock(int subtract) {
-    if (stock <= 0)
+    if (stock <= 0) {
+        stock = 0 ; // this can't go below zero for any reason
         return false;
+    }
     stock -= subtract;
     return true;
 }

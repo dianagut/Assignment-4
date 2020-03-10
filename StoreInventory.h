@@ -24,14 +24,7 @@ public:
     void addItem(Movie*);
     Movie* findItem(std::string);
 
-private:
-    struct MovieHash {
-        unsigned long operator()(const std::string& k) const
-        {
-            return std::hash<std::string>()(k) % TABLE_SIZE;
-        }
-    };
-    
+private: 
     void insertSorted(Movie *movie);
     int typeToIndex(char movieType);
     ostream& outSorted(ostream& output) const;

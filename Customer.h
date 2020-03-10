@@ -15,6 +15,8 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <vector>
+#include "HashMap.h"
 
 using namespace std;
 
@@ -36,14 +38,17 @@ public:
     string getLast() const;  // getLastName()
 
     bool setData(istream&);
-    void storeHistory(char);
+    void storeHistory(std::string);
     void showHistory(ostream &);
-
+    void doBorrow(Movie*);
+    bool doReturn(Movie *m);
+    
 private:
     int customerID;
     string firstName;
     string lastName;
-    int txCount = 0;
+    std::vector<std::string> history;
+    HashMap<std::string, int, MovieHash> borrowed;
 };
 
 #endif
