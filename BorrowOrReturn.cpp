@@ -8,6 +8,7 @@
 // Notes on specifications, special algorithms, and assumptions.
 // --------------------------------------------------------------------------------------------------------------------
 
+#include <algorithm>
 #include "BorrowOrReturn.h"
 
 
