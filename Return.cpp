@@ -10,13 +10,12 @@
 
 #include "Return.h"
 
-void Return::processTransaction(StoreInventory*, CustomerStorage*) {
-    
-}
-
-void Return::setData(std::string line) {
-    Transaction::setData(line);
-    std::istringstream iss(line);
-    std::string temp;
-    iss >> temp;
+void Return::innerProcess(Movie* m , Customer* c) {
+    if (c->doReturn(m)) {
+        m->increaseStock(1);
+        c->storeHistory(rawCommand);
+    }
+    else {
+        std::cerr << m->getHashKey() << " can't be returned by customer " << c->getID() << "\n";
+    }
 }

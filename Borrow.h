@@ -11,20 +11,11 @@
 #ifndef Borrow_h
 #define Borrow_h
 
-#include "transaction.h"
+#include "BorrowOrReturn.h"
 
-class Borrow : public Transaction {
+class Borrow : public BorrowOrReturn {
 public:
-    Borrow() : Transaction('B') { }
-    char getMediaType() { return mediaType; }
-    char getMovieType() { return movieType; }
-    std::string getMovieData() { return movieData; }
-    void processTransaction(StoreInventory*, CustomerStorage*);
-    void setData(std::string);
-    
-private:
-    char mediaType;
-    char movieType;
-    std::string movieData;
+    Borrow() : BorrowOrReturn('B') { }
+    void innerProcess(Movie*, Customer*);
 };
 #endif

@@ -121,4 +121,12 @@ private:
     HashNode<K, V> **table;
     F hashFunc;
 };
+
+struct MovieHash {
+    unsigned long operator()(const std::string& k) const
+    {
+        return std::hash<std::string>()(k) % TABLE_SIZE;
+    }
+};
+
 #endif

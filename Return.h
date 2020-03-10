@@ -11,13 +11,11 @@
 #ifndef Return_h
 #define Return_h
 
-#include "transaction.h"
+#include "BorrowOrReturn.h"
 
-class Return : public Transaction {
+class Return : public BorrowOrReturn {
 public:
-    Return() : Transaction('R') { }
-    void processTransaction(StoreInventory*, CustomerStorage*);
-    void setData(std::string);
-
+    Return() : BorrowOrReturn('R') { }
+    void innerProcess(Movie*, Customer*);
 };
 #endif

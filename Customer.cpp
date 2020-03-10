@@ -66,3 +66,32 @@ void Customer::showHistory(ostream &output) {
     std::copy(history.begin(), history.end(), std::ostream_iterator<std::string>(output, " "));
     output << "-- end of history --\n";
 }
+
+void Customer::doBorrow(Movie* m) {
+    if(m) {
+        int qty = 1;
+        if ( borrowed.get(m->getHashKey(), qty)) {
+            qty++;
+        }
+        borrowed.put(m->getHashKey(), qty);
+    }
+}
+
+bool Customer::doReturn(Movie *m) {
+    if(m) {
+        int qty = 0;
+        if (borrowed.get(m->getHashKey(), qty) && qty > 0) {
+            qty--;
+            if (qty>0) {
+                borrowed.put(m->getHashKey(), qty);
+            } else {
+                borrowed.remove(m->getHashKey());
+            }
+        } else {
+            return false;
+        }
+        return true;
+    }
+    std::cerr << "Invalid movie\n";
+    return false;
+}

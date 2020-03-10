@@ -38,7 +38,7 @@ Transaction* TransactionFactory::createTransaction(std::string line)
             transaction = new Inventory();
             break;
         default:
-                cout << type << " is not a valid command\n";
+                std::cerr << type << " is not a valid command\n";
             transaction = NULL;
             break;
         }

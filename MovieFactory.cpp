@@ -35,7 +35,7 @@ Movie* MovieFactory::createMovieFromLine(std::string line)
             answer = new Comedy();
             break;
         default:
-                cout << "Movie type " << line[0] << " not recognized :\n\t" << line << "\n";
+                std::cerr << "Movie type " << line[0] << " not recognized :\n\t" << line << "\n";
         }
         if (answer) {
             answer->setData(iss);
