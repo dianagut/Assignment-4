@@ -30,7 +30,6 @@ private:
     ostream& outSorted(ostream& output) const;
     
     static const int MAX_TYPES = 10;
-    std::vector<char> types;
     HashMap<std::string, Movie*, MovieHash> movies;
     int sortedCount[MAX_TYPES];
     Movie* sorted[MAX_TYPES][100];

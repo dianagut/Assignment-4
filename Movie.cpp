@@ -19,12 +19,13 @@
 #include "StringUtils.h"
 using namespace std;
 
-Movie::Movie(char type) {
-    movieType = type;
+Movie::Movie(char movieType, char mediaType) {
+    this->movieType = movieType;
     director = "";
     title = "";
     releaseYear = 0;
     stock = 0;
+    this->mediaType = mediaType;
 }
 
 std::istream& Movie::setData(std::istream& stream)
@@ -37,20 +38,6 @@ std::istream& Movie::setData(std::istream& stream)
     getline(stream, temp, ',');
     title = StringUtils::trim(temp);
     return stream;
-}
-
-void Movie::createMovie(string& data) {
-    stringstream stream;
-    stream << data;
-    string temp;
-    getline(stream, temp, ',');
-    movieType = temp[0];
-    getline(stream, temp, ',');
-    stringstream(temp) >> stock;
-    getline(stream, director, ',');
-    getline(stream, title, ',');
-    getline(stream, temp, ',');
-    stringstream(temp) >> releaseYear;
 }
 
 bool Movie::increaseStock(int add) {
@@ -91,6 +78,6 @@ std::ostream& Movie::toOutput(std::ostream& output) const {
     return output;
 }
 
-ostream& operator<<(ostream& output, const Movie& m) {
-    return m.toOutput(output);
+ostream& operator<<(ostream& output, const Movie& movie) {
+    return movie.toOutput(output);
 }

@@ -31,10 +31,10 @@ StoreInventory::~StoreInventory() {
     }
 }
 
-void StoreInventory::addItem(Movie* m) {
-    if (m) {
-        movies.put(m->getHashKey(), m);
-        insertSorted(m);
+void StoreInventory::addItem(Movie* movie) {
+    if (movie) {
+        movies.put(movie->getHashKey(), movie);
+        insertSorted(movie);
     }
 }
 

@@ -13,14 +13,18 @@
 
 
 void BorrowOrReturn::processTransaction(StoreInventory* inventory, CustomerStorage* customers) {
-    Customer *c = customers->findCustomer(customerId);
-    if (c) {
-        Movie *m = inventory->findItem(movieData);
-        if (!m) {
+    Customer *customer = customers->findCustomer(customerId);
+    if (customer) {
+        Movie *movie = inventory->findItem(movieData);
+        if (!movie) {
             std::cerr << "Movie " << movieData << " was not found\n";
             return;
         }
-        innerProcess(m, c);
+        if (mediaType != movie->getMediaType()) {
+            std::cerr << "Movie " << movieData << " not available for mediaType " << mediaType << "\n";
+            return;
+        }
+        innerProcess(movie, customer);
     } else {
         std::cerr << "Customer " << customerId << " was not found\n";
     }

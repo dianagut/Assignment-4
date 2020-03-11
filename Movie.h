@@ -22,9 +22,6 @@ using namespace std;
          
      };
      
-     // returns movie information
-     virtual void createMovie(string &data);
-        
      // increase stock
      virtual bool increaseStock(int);
      
@@ -35,20 +32,24 @@ using namespace std;
      virtual bool operator==(const Movie&) const;
      virtual bool operator!=(const Movie&) const;
      virtual bool operator>(const Movie&) const;
-     virtual bool operator<(const Movie&)const;
+     virtual bool operator<(const Movie&) const;
      
-     char getMovieType() { return movieType; }
      virtual std::istream& setData(std::istream &);
-     
+
+     // getters / setters
+     char getMovieType() { return movieType; }
      string getTitle() { return title; }
      string getDirector() { return director; }
      int getStock() { return stock; }
      int getReleaseYear() { return releaseYear; }
+     char getMediaType() { return mediaType; }
+
      virtual std::string getHashKey() { return title; }
  protected:
-     Movie(char); // constructor
+     Movie(char, char mediaType = 'D'); // constructor
      virtual std::ostream& toOutput(std::ostream &) const;
      
+     char mediaType;
      char movieType;
      string director;
      int stock;
