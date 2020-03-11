@@ -7,13 +7,14 @@ APP_DIR  := $(BUILD)/apps
 TARGET   := movies
 INCLUDE  := -Iinclude/
 SRC      :=                      \
+   $(wildcard src/*.cpp) 	\
    $(wildcard *.cpp)         \
 
 OBJECTS  := $(SRC:%.cpp=$(OBJ_DIR)/%.o)
 
 all: build $(APP_DIR)/$(TARGET)
 
-$(OBJ_DIR)/%.o: %.cpp %.h
+$(OBJ_DIR)/%.o: %.cpp 
 	@mkdir -p $(@D)
 	$(CXX) $(CXXFLAGS) $(INCLUDE) -c $< -o $@ $(LDFLAGS)
 
