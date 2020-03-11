@@ -63,9 +63,9 @@ void Customer::storeHistory(std::string command) {
 }
 
 void Customer::showHistory(ostream &output) {
-    output << "History for " << customerID << "\n ";
-    std::copy(history.begin(), history.end(), std::ostream_iterator<std::string>(output, " "));
-    output << "-- end of history --\n";
+    output << "History for " << customerID <<  std::endl;
+    std::copy(history.begin(), history.end(), std::ostream_iterator<std::string>(output, " \n"));
+    output << "-- end of history --" <<  std::endl;
 }
 
 void Customer::doBorrow(Movie* movie) {
@@ -93,6 +93,6 @@ bool Customer::doReturn(Movie *m) {
         }
         return true;
     }
-    std::cerr << "Invalid movie\n";
+    std::cerr << "Invalid movie"  <<  std::endl;
     return false;
 }
