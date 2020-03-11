@@ -25,9 +25,9 @@ void Store::loadMovies(std::string fileName) {
     
     while (std::getline(infile, line))
     {
-        Movie *m = MovieFactory::createMovieFromLine(line);
-        if (m) {
-            inventory.addItem(m);
+        Movie *movie = MovieFactory::createMovieFromLine(line);
+        if (movie) {
+            inventory.addItem(movie);
         }
     }
     infile.close();
