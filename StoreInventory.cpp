@@ -79,7 +79,7 @@ void StoreInventory::insertSorted(Movie *movie)
  ostream& StoreInventory::outSorted(ostream& output) const {
     for(int mt = 0 ; mt < maxMovieTypes; mt ++) {
         for(int i = 0; i < sortedCount[mt]; i++) {
-            output << *sorted[mt][i] << '\n';
+            output << *sorted[mt][i] << std::endl ;
         }
     }
     return output;

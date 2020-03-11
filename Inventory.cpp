@@ -11,6 +11,6 @@
 #include "Inventory.h"
 
 void Inventory::processTransaction(StoreInventory *inventory, CustomerStorage* customers) {
-    std::cout << "Current inventory: \n";
-    std::cout << *inventory << "\n";
+    std::cout << "Current inventory: " <<  std::endl;
+    std::cout << *inventory <<  std::endl;
 }
