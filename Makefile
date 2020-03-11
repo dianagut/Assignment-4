@@ -3,7 +3,7 @@ CXXFLAGS := -g -c -pthread -std=c++11
 LDFLAGS  := -g
 BUILD    := ./build
 OBJ_DIR  := $(BUILD)/objects
-APP_DIR  := $(BUILD)/apps
+APP_DIR  := $(BUILD)/
 TARGET   := movies
 INCLUDE  := -Iinclude/
 SRC      :=                      \

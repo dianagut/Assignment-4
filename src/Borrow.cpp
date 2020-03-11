@@ -17,7 +17,7 @@
 
 void Borrow::innerProcess(Movie* m, Customer* c) {
     if (!m->descreaseStock(1)) {
-        std::cerr << "Not enough of " << movieData << "\n";
+        std::cerr << "Not enough of " << movieData << std::endl;
     } else {
         c->storeHistory(rawCommand);
         c->doBorrow(m);

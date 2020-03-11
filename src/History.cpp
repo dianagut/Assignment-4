@@ -16,7 +16,7 @@ void History::processTransaction(StoreInventory*, CustomerStorage* customers) {
     if (c) {
         c->showHistory(std::cout);
     } else {
-        std::cerr << "Customer " << customerId << " was not found\n";
+        std::cerr << "Customer " << customerId << " was not found" <<  std::endl;
     }
 }
 
