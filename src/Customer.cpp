@@ -68,13 +68,13 @@ void Customer::showHistory(ostream &output) {
     output << "-- end of history --\n";
 }
 
-void Customer::doBorrow(Movie* m) {
-    if(m) {
+void Customer::doBorrow(Movie* movie) {
+    if(movie) {
         int qty = 1;
-        if ( borrowed.get(m->getHashKey(), qty)) {
+        if ( borrowed.get(movie->getHashKey(), qty)) {
             qty++;
         }
-        borrowed.put(m->getHashKey(), qty);
+        borrowed.put(movie->getHashKey(), qty);
     }
 }
 
