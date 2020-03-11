@@ -63,7 +63,7 @@ void Customer::storeHistory(std::string command) {
 }
 
 void Customer::showHistory(ostream &output) {
-    output << "History for " << customerID <<  std::endl;
+    output << "History for " << getName() <<  std::endl;
     std::copy(history.begin(), history.end(), std::ostream_iterator<std::string>(output, " \n"));
     output << "-- end of history --" <<  std::endl;
 }

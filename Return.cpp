@@ -16,6 +16,6 @@ void Return::innerProcess(Movie* m , Customer* c) {
         c->storeHistory(rawCommand);
     }
     else {
-        std::cerr << m->getHashKey() << " can't be returned by customer " << c->getID() <<  std::endl;
+        std::cerr << m->getHashKey() << " can't be returned by customer " << c->getID() << " " << c->getName() <<  std::endl;
     }
 }
