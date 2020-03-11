@@ -46,11 +46,11 @@ Movie* StoreInventory::findItem(std::string key) {
 
 int StoreInventory::typeToIndex(char movieType) {
     switch(movieType) {
-        case 'C':
+        case 'F':
             return 0;
         case 'D':
             return 1;
-        case 'F':
+        case 'C':
             return 2;
         default:
             std::cerr << "Error " << movieType << " is not supported";
