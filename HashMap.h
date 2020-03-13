@@ -12,7 +12,6 @@
 #define HashMap_hpp
 
 #include <string>
-#include <vector>
 #include "Movie.h"
 #include "HashNode.h"
 
