@@ -48,6 +48,8 @@ private:
     string firstName;
     string lastName;
     std::vector<std::string> history;
+    // list of borrowed movies, indexed by movie sorting string
+    // we store how many of the movie the customer has
     HashMap<std::string, int, MovieHash> borrowed;
 };
 
