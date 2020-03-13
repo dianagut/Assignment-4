@@ -30,7 +30,10 @@ private:
     ostream& outSorted(ostream& output) const;
     
     static const int MAX_TYPES = 10;
+    // Movies indexed by the HashKey
     HashMap<std::string, Movie*, MovieHash> movies;
+    // optimization to store the sorted list of movies
+    // we only store pointers, to avoid wasting memory
     int sortedCount[MAX_TYPES];
     Movie* sorted[MAX_TYPES][100];
     int maxMovieTypes;

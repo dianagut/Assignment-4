@@ -28,6 +28,8 @@ private:
         }
     };
     
+    // Customers indexed by the customerID
+    // store only pointers to customers
     HashMap<int, Customer*, CustomerHash> customers;
     
 };
