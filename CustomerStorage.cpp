@@ -17,10 +17,24 @@ CustomerStorage::~CustomerStorage() {
 void CustomerStorage::addCustomer(Customer *c) {
     if (c && c->getID()) {
         customers.put(c->getID(), c);
+        Customer *t;
+        customers.get(c->getID(), t);
+        if (!t || t->getID() != c->getID()) {
+            std::cerr << c->getID() << " not found " << std::endl;
+        }
     }
 }
 
 Customer* CustomerStorage::findCustomer(int id) {
     Customer *c;
     return customers.get(id, c) ? c : NULL;
+}
+
+void CustomerStorage::listIds() {
+    int keys[1000];
+    int count = customers.getKeys(keys);
+    for(int i = 0 ; i <= count; i++) {
+        std::cout << i << ": " << keys[i] << "\n";
+    }
+    std::cout << "--" << std::endl;
 }

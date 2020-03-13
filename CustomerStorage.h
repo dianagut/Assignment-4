@@ -19,6 +19,7 @@ public:
     ~CustomerStorage();
     void addCustomer(Customer *);
     Customer* findCustomer(int);
+    void listIds();
 private:
     struct CustomerHash {
         unsigned long operator()(const int& k) const

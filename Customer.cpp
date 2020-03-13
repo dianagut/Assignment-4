@@ -50,12 +50,22 @@ ostream & operator<<(ostream &output, const Customer &cust) {
 }
 
 bool Customer::setData(istream& infile) {
-    std::string temp;
-    std::getline(infile, temp, ' ');
-    customerID = std::stoi(temp);
-    std::getline(infile, firstName, ' ');
-    std::getline(infile, lastName);
-    return !infile.eof();       // eof function is true when eof char is read
+    if (infile.eof()) {
+        return false;
+    }
+    try {
+        std::string temp;
+        std::getline(infile, temp, ' ');
+        if (temp.empty()) {
+            return false;
+        }
+        customerID = std::stoi(temp);
+        std::getline(infile, firstName, ' ');
+        std::getline(infile, lastName);
+    } catch (const char *msg) {
+        return false;
+    }
+    return true;       // eof function is true when eof char is read
 }
 
 void Customer::storeHistory(std::string command) {
@@ -63,7 +73,7 @@ void Customer::storeHistory(std::string command) {
 }
 
 void Customer::showHistory(ostream &output) {
-    output << "History for " << customerID <<  std::endl;
+    output << "History for " << getName() <<  std::endl;
     std::copy(history.begin(), history.end(), std::ostream_iterator<std::string>(output, " \n"));
     output << "-- end of history --" <<  std::endl;
 }

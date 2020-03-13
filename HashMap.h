@@ -104,16 +104,16 @@ public:
         }
     }
 
-    std::vector<K> getKeys() const {
-        std::vector<K> keys;
+    int getKeys(K keys[]) const {
+        int index = 0;
         for(int i = 0; i < TABLE_SIZE; i++) {
             HashNode<K, V> *entry = table[i];
-            while(entry) {
-                keys.push_back(entry->getKey());
+            while(entry != NULL) {
+                keys[index++]= entry->getKey();
                 entry = entry->getNext();
             }
         }
-        return keys;
+        return index;
     }
 
 private:

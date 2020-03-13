@@ -40,11 +40,12 @@ void Store::loadCustomers(std::string fileName) {
     std::ifstream infile(fileName);
     std::string line;
     
-    while (std::getline(infile, line))
+    while (!infile.eof())
     {
         Customer *c = new Customer();
-        c->setData(infile);
-        customers.addCustomer(c);
+        if(c->setData(infile)) {
+            customers.addCustomer(c);
+        }
     }
     
     infile.close();
