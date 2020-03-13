@@ -10,9 +10,12 @@
 
 #ifndef Classics_h
 #define Classics_h
+
+#include <string>
 #include "Movie.h"
 
-class Classics : public Movie {
+class Classics : public Movie 
+{
 
 public:
     //constructor
@@ -31,6 +34,6 @@ protected:
     int month; // release date
     string majorActor; // first name, last name
 
-    ostream& toOutput(std::ostream&) const; //overload output operator
+    ostream& toOutput(ostream&) const; //overload output operator
 };
 #endif /* Classics_h */

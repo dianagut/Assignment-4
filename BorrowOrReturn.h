@@ -11,6 +11,7 @@
 #ifndef BorrowOrReturn_h
 #define BorrowOrReturn_h
 
+#include <string>
 #include "transaction.h"
 #include "Movie.h"
 #include "Customer.h"
@@ -23,12 +24,12 @@ public:
     char getMediaType() { return mediaType; }
     char getMovieType() { return movieType; }
     string getMovieData() { return movieData; }
-    void setData(std::string);
+    void setData(string);
     void processTransaction(StoreInventory* , CustomerStorage* );
     virtual void innerProcess(Movie*, Customer*) { };
 protected:
     char mediaType;
     char movieType;
-    std::string movieData;
+    string movieData;
 };
 #endif /* BorrowOrReturn_h */

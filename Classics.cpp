@@ -61,11 +61,15 @@ string Classics::getHashKey()
 // preconditions: takes in a movie
 // postconditions: checks if lhs movie is < rhs
 // -------------------------------------------------------------------------
-bool Classics::operator<(const Movie &movie)const {
-    try {
+bool Classics::operator<(const Movie &movie)const 
+{
+    try 
+    {
         const Classics& other = static_cast<const Classics&>(movie);
         return month < other.month && releaseYear < other.releaseYear && majorActor < other.majorActor;
-    } catch (const bad_cast& e) {
+    } 
+    catch (const bad_cast& e) 
+    {
         return Movie::operator<(movie);
     }
     return false;
@@ -79,10 +83,12 @@ bool Classics::operator<(const Movie &movie)const {
 bool Classics::operator==(const Movie& movie) const
 {
     bool equals = Movie::operator==(movie);
-    try {
+    try 
+    {
         const Classics& classicsCast = static_cast<const Classics&>(movie);
         equals &= majorActor == classicsCast.majorActor;
-    } catch (const bad_cast& e) {
+    } catch (const bad_cast& e) 
+    {
         return equals;
     }
     return equals;
@@ -110,7 +116,8 @@ istream& Classics::setData(istream& stream)
 // preconditions: none
 // postconditions: displays in given format
 // -------------------------------------------------------------------------
-ostream& Classics::toOutput(ostream& output) const {
+ostream& Classics::toOutput(ostream& output) const 
+{
     Movie::toOutput(output);
     output << ", " << majorActor << ", " << month << " " << releaseYear;
     return output;
