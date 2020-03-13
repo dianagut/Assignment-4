@@ -1,25 +1,32 @@
-// ------------------------------------------------BorrowCommand.cpp----------------------------------------------------
+// ------------------------------------------------Borrow.cpp----------------------------------------------------
 // Andrea Shirley-Bellande & Diana Gutierrez , 343C
 // Created: March 6, 2020
 // Last Modified:
 // --------------------------------------------------------------------------------------------------------------------
-// Purpose:
+// Purpose: This is the implementation of the borrow class. 
 // --------------------------------------------------------------------------------------------------------------------
-// Notes on specifications, special algorithms, and assumptions.
+// Assumptions: input will be formatted correctly
 // --------------------------------------------------------------------------------------------------------------------
 
 
-#include <vector>
+
 #include <iterator>
 #include <algorithm>
 #include "Borrow.h"
 
+using namespace std;
 
-void Borrow::innerProcess(Movie* m, Customer* c) {
-    if (!m->descreaseStock(1)) {
-        std::cerr << "Not enough of " << movieData << std::endl;
+// ---------------------InnerProcess--------------------------------
+// InnerProcess: borrows a movie for a customer
+// preconditions: Takes in a movie and customer as param
+// postconditions: Checks if enough stock to borrow movie
+// -------------------------------------------------------------------------
+void Borrow::innerProcess(Movie* movie, Customer* customer) 
+{
+    if (!movie->descreaseStock(1)) {
+        cerr << "Not enough of " << movieData << endl;
     } else {
-        c->storeHistory(rawCommand);
-        c->doBorrow(m);
+        customer->storeHistory(rawCommand);
+        customer->doBorrow(movie);
     }
 }

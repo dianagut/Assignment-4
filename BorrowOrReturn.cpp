@@ -3,42 +3,59 @@
 // Created: March 6, 2020
 // Last Modified:
 // --------------------------------------------------------------------------------------------------------------------
-// Purpose:
+// Purpose: Implements the borroworreturn class
 // --------------------------------------------------------------------------------------------------------------------
-// Notes on specifications, special algorithms, and assumptions.
+// Assumptions: file will be formatted correctly. 
 // --------------------------------------------------------------------------------------------------------------------
 
 #include <algorithm>
 #include "BorrowOrReturn.h"
 
+using namespace std;
 
-void BorrowOrReturn::processTransaction(StoreInventory* inventory, CustomerStorage* customers) {
+// ---------------------BorroworReturn--------------------------------
+// Constructor: processes a borrow or return.
+// preconditions: takes in inventory and customer
+// postconditions: checks if item exists 
+// ------------------------------------------------------------------------
+void BorrowOrReturn::processTransaction(StoreInventory* inventory, CustomerStorage* customers) 
+{
     Customer *customer = customers->findCustomer(customerId);
-    if (customer) {
+    if (customer) 
+    {
         Movie *movie = inventory->findItem(movieData);
-        if (!movie) {
-            std::cerr << "Movie " << movieData << " was not found" <<  std::endl;
+        if (!movie) 
+        {
+            cerr << "Movie " << movieData << " was not found" <<  std::endl;
             return;
         }
-        if (mediaType != movie->getMediaType()) {
+        if (mediaType != movie->getMediaType()) 
+        {
             std::cerr << "Movie " << movieData << " not available for mediaType " << mediaType <<  std::endl;
             return;
         }
         innerProcess(movie, customer);
-    } else {
-        std::cerr << "Customer " << customerId << " was not found" <<  std::endl;
+    } else 
+    {
+        cerr << "Customer " << customerId << " was not found" <<  std::endl;
     }
 }
 
-void BorrowOrReturn::setData(std::string line) {
+// ---------------------setData--------------------------------
+// setData: sets data from file.
+// preconditions: takes in a string line
+// postconditions: sets data from the file
+// ------------------------------------------------------------------------
+void BorrowOrReturn::setData(string line) 
+{
     Transaction::setData(line);
-    std::istringstream iss(line);
-    std::string temp;
+    istringstream iss(line);
+    string temp;
     iss >> temp;
     iss >> customerId;
     iss >> mediaType;
     iss >> movieType;
-    std::getline(iss, movieData);
+    getline(iss, movieData);
     movieData.erase(remove(movieData.begin(), movieData.end(), ','), movieData.end()); // remove , from string
     StringUtils::trim(movieData);
 }

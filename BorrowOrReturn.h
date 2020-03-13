@@ -3,9 +3,9 @@
 // Created: March 6, 2020
 // Last Modified:
 // --------------------------------------------------------------------------------------------------------------------
-// Purpose:
+// Purpose: This file contains the class borroworeturn
 // --------------------------------------------------------------------------------------------------------------------
-// Notes on specifications, special algorithms, and assumptions.
+// Assumptions: file will be formatted correctly. 
 // --------------------------------------------------------------------------------------------------------------------
 
 #ifndef BorrowOrReturn_h
@@ -15,12 +15,14 @@
 #include "Movie.h"
 #include "Customer.h"
 
+using namespace std;
+
 class BorrowOrReturn : public Transaction {
 public:
     BorrowOrReturn(char t) : Transaction(t) { }
     char getMediaType() { return mediaType; }
     char getMovieType() { return movieType; }
-    std::string getMovieData() { return movieData; }
+    string getMovieData() { return movieData; }
     void setData(std::string);
     void processTransaction(StoreInventory* , CustomerStorage* );
     virtual void innerProcess(Movie*, Customer*) { };
