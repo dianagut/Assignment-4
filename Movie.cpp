@@ -1,11 +1,11 @@
 // ------------------------------------------------ Movie.cpp -------------------------------------------------------
 // Andrea Shirley-Bellande & Diana Gutierrez , 343C
 // Created: March 6, 2020
-// Last Modified:
+// Last Modified: March 14, 2020
 // --------------------------------------------------------------------------------------------------------------------
-// Purpose: 
+// Purpose: this implements the movie class 
 // --------------------------------------------------------------------------------------------------------------------
-// Notes on specifications, special algorithms, and assumptions.
+// Assumptions: files will be formatted correctly
 // -------------------------------------------------------------------------------------------------------------------- 
 
 #include "Movie.h"
@@ -17,9 +17,16 @@
 #include "Comedy.h"
 #include "Classics.h"
 #include "StringUtils.h"
+
 using namespace std;
 
-Movie::Movie(char movieType, char mediaType) {
+// ---------------------constructor--------------------------------
+// constructor: default constructor
+// preconditions: none
+// postconditions: sets movieType, director, title, releaseyear, stock and mediatype
+// -------------------------------------------------------------------------
+Movie::Movie(char movieType, char mediaType) 
+{
     this->movieType = movieType;
     director = "";
     title = "";
@@ -28,11 +35,16 @@ Movie::Movie(char movieType, char mediaType) {
     this->mediaType = mediaType;
 }
 
-std::istream& Movie::setData(std::istream& stream)
+// ---------------------setData--------------------------------
+// setData: sets data
+// preconditions: none
+// postconditions: sets data from file
+// -------------------------------------------------------------------------
+istream& Movie::setData(istream& stream)
 {
-    std::string temp;
+    string temp;
     getline(stream, temp, ',');
-    stock = std::stoi(temp);
+    stock = stoi(temp);
     getline(stream, temp, ',');
     director = StringUtils::trim(temp);
     getline(stream, temp, ',');
@@ -40,13 +52,26 @@ std::istream& Movie::setData(std::istream& stream)
     return stream;
 }
 
-bool Movie::increaseStock(int add) {
+// --------------------increaseStock--------------------------------
+// increaseStock: increases stock
+// preconditions: none
+// postconditions: increases stock when returned
+// -------------------------------------------------------------------------
+bool Movie::increaseStock(int add) 
+{
     stock += add;
     return true;
 }
 
-bool Movie::descreaseStock(int subtract) {
-    if (stock <= 0) {
+// --------------------decreaseStock--------------------------------
+// decreaseStock: decrease stock
+// preconditions: none
+// postconditions: decreases stock when borrowed must never reach less than 0
+// -------------------------------------------------------------------------
+bool Movie::descreaseStock(int subtract) 
+{
+    if (stock <= 0) 
+    {
         stock = 0 ; // this can't go below zero for any reason
         return false;
     }
@@ -54,30 +79,66 @@ bool Movie::descreaseStock(int subtract) {
     return true;
 }
 
-bool Movie::operator<(const Movie &movie) const {
+// --------------------operator<--------------------------------
+// operator<: overload < operator 
+// preconditions: none
+// postconditions: checks if lhs < rhs 
+// -------------------------------------------------------------------------
+bool Movie::operator<(const Movie &movie) const 
+{
     return movieType < movie.movieType;
 }
 
-bool Movie::operator>(const Movie& movie) const {
+// --------------------operator>--------------------------------
+// operator>: overload > operator 
+// preconditions: none
+// postconditions: checks if lhs > rhs 
+// -------------------------------------------------------------------------
+bool Movie::operator>(const Movie& movie) const 
+{
     return !(*this < movie);
 }
 
-bool Movie::operator==(const Movie& movie) const {
+// --------------------operator==--------------------------------
+// operator==: overload == operator 
+// preconditions: none
+// postconditions: checks if lhs == rhs 
+// -------------------------------------------------------------------------
+bool Movie::operator==(const Movie& movie) const 
+{
     return movieType == movie.movieType &&
     director == movie.director &&
     title == movie.title &&
     releaseYear == movie.releaseYear;
 }
 
-bool Movie::operator!=(const Movie& movie)const {
+// --------------------operator!=--------------------------------
+// operator!=: overload != operator 
+// preconditions: none
+// postconditions: checks if lhs != rhs 
+// -------------------------------------------------------------------------
+bool Movie::operator!=(const Movie& movie)const 
+{
     return !(*this == movie);
 }
 
-std::ostream& Movie::toOutput(std::ostream& output) const {
+// --------------------toOuput--------------------------------
+// toOuput: creates movie output
+// preconditions: none
+// postconditions: displays output in proper format
+// -------------------------------------------------------------------------
+ostream& Movie::toOutput(std::ostream& output) const 
+{
     output << movieType << ", " << stock << ", " << director << ", " << title;
     return output;
 }
 
-ostream& operator<<(ostream& output, const Movie& movie) {
+// --------------------operator<<--------------------------------
+// operator<: overload << operator 
+// preconditions: none
+// postconditions: overloads the << for display
+// -------------------------------------------------------------------------
+ostream& operator<<(ostream& output, const Movie& movie) 
+{
     return movie.toOutput(output);
 }
