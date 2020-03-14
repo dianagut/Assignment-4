@@ -117,7 +117,7 @@ bool Customer::setData(istream& infile)
         {
             return false;
         }
-        customerID = std::stoi(temp);
+        customerID = stoi(temp);
         getline(infile, firstName, ' ');
         getline(infile, lastName);
     } 
