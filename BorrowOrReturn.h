@@ -31,5 +31,6 @@ protected:
     char mediaType;
     char movieType;
     string movieData;
+    int amount = 1;
 };
 #endif /* BorrowOrReturn_h */

@@ -23,10 +23,12 @@ using namespace std;
 // -------------------------------------------------------------------------
 void Borrow::innerProcess(Movie* movie, Customer* customer) 
 {
-    if (!movie->descreaseStock(1)) {
-        cerr << "Not enough of " << movieData << endl;
-    } else {
-        customer->storeHistory(rawCommand);
-        customer->doBorrow(movie);
+        if (!movie->descreaseStock(amount)) {
+            cerr << "Not enough of " << movieData << endl;
+        } else {
+            customer->storeHistory(rawCommand);
+            customer->doBorrow(movie);
+        }
     }
-}
+
+

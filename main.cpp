@@ -1,19 +1,15 @@
-// -------------------------------------------------- main.cpp --------------------------------------------------------
-// Andrea Shirley-Bellande & Diana Gutierrez , 343C
-// Created: March 6, 2020
-// Last Modified:
-// --------------------------------------------------------------------------------------------------------------------
-// Purpose:
-// --------------------------------------------------------------------------------------------------------------------
-// Notes on specifications, special algorithms, and assumptions.
-// --------------------------------------------------------------------------------------------------------------------
+//
+//  main.cpp
+//  Assignment4
+//
+//  Created by Diana Gutierrez on 3/13/20.
+//  Copyright © 2020 Diana Gutierrez. All rights reserved.
+//
 
-
-#include "Store.h"
+#include <iostream>
 
 int main(int argc, const char * argv[]) {
-    Store store;
-    store.loadMovies("data4movies.txt");
-    store.loadCustomers("data4customers.txt");
-    store.runCommands("data4commands.txt");
+    // insert code here...
+    std::cout << "Hello, World!\n";
+    return 0;
 }

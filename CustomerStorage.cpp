@@ -12,6 +12,7 @@
 
 CustomerStorage::~CustomerStorage() {
     // free memory for all customers
+
 }
 
 void CustomerStorage::addCustomer(Customer *c) {

@@ -34,6 +34,11 @@ void BorrowOrReturn::processTransaction(StoreInventory* inventory, CustomerStora
             cerr << "Movie " << movieData << " not available for mediaType " << mediaType <<  endl;
             return;
         }
+        if(movieType != movie -> getMovieType())
+        {
+            cerr << "Movie " << movieData << " not available for mediaType " << mediaType <<  endl;
+            return;
+        }
         innerProcess(movie, customer);
     } else 
     {
