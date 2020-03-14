@@ -1,16 +1,22 @@
 // ------------------------------------------- InventoryCommand.cpp ---------------------------------------------------
 // Andrea Shirley-Bellande & Diana Gutierrez , 343C
 // Created: March 6, 2020
-// Last Modified:
+// Last Modified: March 14, 2020
 // --------------------------------------------------------------------------------------------------------------------
-// Purpose:
+// Purpose: this implemets the inventory class
 // --------------------------------------------------------------------------------------------------------------------
-// Notes on specifications, special algorithms, and assumptions.
+// Assumptions: The file will be correctly formatted
 // --------------------------------------------------------------------------------------------------------------------
 
 #include "Inventory.h"
 
-void Inventory::processTransaction(StoreInventory *inventory, CustomerStorage* customers) {
-    std::cout << "Current inventory: " <<  std::endl;
-    std::cout << *inventory <<  std::endl;
+// ---------------------processtransaction--------------------------------
+// processtransaction: processes transactions
+// preconditions: Takes in inventory and customers
+// postconditions: displays the inventory
+// -------------------------------------------------------------------------
+void Inventory::processTransaction(StoreInventory *inventory, CustomerStorage* customers) 
+{
+    cout << "Current inventory: " << endl;
+    cout << *inventory << endl;
 }
