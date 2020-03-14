@@ -3,11 +3,9 @@
 // Created: March 6, 2020
 // Last Modified:
 // --------------------------------------------------------------------------------------------------------------------
-// Purpose:
+// Purpose: This class will implement StringUtils
 // --------------------------------------------------------------------------------------------------------------------
-// Notes on specifications, special algorithms, and assumptions.
 // --------------------------------------------------------------------------------------------------------------------
-
 
 #ifndef StringUtils_h
 #define StringUtils_h
@@ -16,14 +14,15 @@
 #include <string>
 #include <sstream>
 #include <vector>
+using namespace std;
 
 class StringUtils {
 public:
-    static std::string& ltrim(std::string& str, const std::string& chars = "\t\n\v\f\r ");
-    static std::string& rtrim(std::string& str, const std::string& chars = "\t\n\v\f\r ");
-    static std::string& trim(std::string& str, const std::string& chars = "\t\n\v\f\r ");
+    static string& ltrim(string& str, const string& chars = "\t\n\v\f\r ");//removes leading spaces in a string
+    static string& rtrim(string& str, const string& chars = "\t\n\v\f\r ");//removes trailing spaces in a string
+    static string& trim(string& str, const string& chars = "\t\n\v\f\r ");//combines two trimed strings
 
-    static std::vector<std::string> split(const std::string& s, char delimiter);
+    static vector<string> split(const string& s, char delimiter);//splits a string using an identifier of where to split it
 };
 
 #endif

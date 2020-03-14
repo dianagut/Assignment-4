@@ -3,36 +3,56 @@
 // Created: March 6, 2020
 // Last Modified:
 // --------------------------------------------------------------------------------------------------------------------
-// Purpose:
+// Purpose: String Utilities implementation class
 // --------------------------------------------------------------------------------------------------------------------
-// Notes on specifications, special algorithms, and assumptions.
 // --------------------------------------------------------------------------------------------------------------------
 
 #include "StringUtils.h"
+using namespace std;
 
-std::string& StringUtils::ltrim(std::string& str, const std::string& chars)
+// ---------------------ltrim--------------------------------
+// ltrim: removes leading spaces in a string
+// preconditions: Must have two strings
+// postconditions: Will return new string with removed spaces
+// -------------------------------------------------------------------------
+string& StringUtils::ltrim(string& str, const string& chars)
 {
-    str.erase(0, str.find_first_not_of(chars));
+    str.erase(0, str.find_first_not_of(chars)); // removes leading spaces
     return str;
 }
  
-std::string& StringUtils::rtrim(std::string& str, const std::string& chars )
+// ---------------------rtrim--------------------------------
+// rtrim: removes trailing spaces in a string
+// preconditions: Must have two strings
+// postconditions: Will return new string with removed spaces
+// -------------------------------------------------------------------------
+string& StringUtils::rtrim(string& str, const string& chars )
 {
-    str.erase(str.find_last_not_of(chars) + 1);
+    str.erase(str.find_last_not_of(chars) + 1); // removes trailing spaces
     return str;
 }
  
-std::string& StringUtils::trim(std::string& str, const std::string& chars )
+// ---------------------trim--------------------------------
+// trim: combines two trimed strings
+// preconditions: Must have two strings
+// postconditions: Will return combined string
+// -------------------------------------------------------------------------
+string& StringUtils::trim(string& str, const string& chars )
 {
-    return ltrim(rtrim(str, chars), chars);
+    return ltrim(rtrim(str, chars), chars); // combines trimed strings
 }
 
-std::vector<std::string> StringUtils::split(const std::string& s, char delimiter)
+// ---------------------split--------------------------------
+// split: splits a string using an identifier of where to split it
+// preconditions: Input a string and identifier
+// postconditions: Will return a vector of the new split strings
+// -------------------------------------------------------------------------
+vector<string> StringUtils::split(const string& s, char delimiter)
 {
-   std::vector<std::string> tokens;
-   std::string token;
-   std::istringstream tokenStream(s);
-   while (std::getline(tokenStream, token, delimiter))
+   vector<string> tokens;
+   string token;
+   istringstream tokenStream(s);
+   while (getline(tokenStream, token, delimiter))
    {
       tokens.push_back(token);
    }
