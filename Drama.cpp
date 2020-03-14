@@ -3,9 +3,9 @@
 // Created: March 6, 2020
 // Last Modified:
 // --------------------------------------------------------------------------------------------------------------------
-// Purpose: 
+// Purpose: implements the drama class. Child class of movie
 // --------------------------------------------------------------------------------------------------------------------
-// Notes on specifications, special algorithms, and assumptions. 
+// Assumptions: file will be formatted correctly
 // -------------------------------------------------------------------------------------------------------------------- 
 
 #include <string>
@@ -15,42 +15,83 @@
 #include <typeinfo>
 #include "Drama.h"
 
-Drama::Drama() : Movie(Drama::TYPE) {
+using namespace std;
+
+// ---------------------constructor--------------------------------
+// Constructor: default constructor
+// preconditions: none
+// postconditions: stock, director, title, and release year
+// -------------------------------------------------------------------------
+Drama::Drama() : Movie(Drama::TYPE) 
+{
 }
 
-Drama::Drama(const string& director, const string& title, const int& year) : Movie(Drama::TYPE) {
+// ---------------------constructor--------------------------------
+// Constructor: overloaded constructor
+// preconditions: none
+// postconditions: stock, director, title, and release year
+// -------------------------------------------------------------------------
+Drama::Drama(const string& director, const string& title, const int& year) : Movie(Drama::TYPE) 
+{
     this->director = director;
     this->title = title;
     releaseYear = year;
 }
 
-bool Drama::operator<(const Movie &movie)const {
-    try {
+// ---------------------operator<--------------------------------
+// operator<: overload the < operator
+// preconditions: none
+// postconditions: checks if lhs is < rhs
+// -------------------------------------------------------------------------
+bool Drama::operator<(const Movie &movie)const 
+{
+    try 
+    {
         const Drama& other = static_cast<const Drama&>(movie);
         return director < other.director && title < other.title;
-    } catch (const std::bad_cast& e) {
+    } 
+    catch (const bad_cast& e) 
+    {
         return Movie::operator<(movie);
     }
     return false;
 }
      
-std::string Drama::getHashKey() {
-    if (hashKey.empty()) {
+// ---------------------getHashKey--------------------------------
+// getHashKey: gets the hash key
+// preconditions: none
+// postconditions: shcecks if hashkey is empty
+// -------------------------------------------------------------------------
+string Drama::getHashKey() 
+{
+    if (hashKey.empty()) 
+    {
         hashKey = director + " " + title;
     }
     return hashKey;
 }
 
-std::istream& Drama::setData(std::istream &stream)
+// ---------------------setData--------------------------------
+// setData: sets the data 
+// preconditions: none
+// postconditions: sets data from the file
+// -------------------------------------------------------------------------
+istream& Drama::setData(istream &stream)
 {
     Movie::setData(stream);
-    std::string temp;
+    string temp;
     getline(stream, temp, ',');
-    releaseYear = std::stoi(temp);
+    releaseYear = stoi(temp);
     return stream;
 }
 
-std::ostream& Drama::toOutput(std::ostream& output) const {
+// ---------------------toOutput--------------------------------
+// toOuput: overlaod the output 
+// preconditions: none
+// postconditions: displays the ouput properly
+// -------------------------------------------------------------------------
+ostream& Drama::toOutput(ostream& output) const 
+{
     Movie::toOutput(output);
     output << ", " << releaseYear;
     return output;

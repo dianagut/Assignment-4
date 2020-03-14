@@ -3,27 +3,35 @@
 // Created: March 6, 2020
 // Last Modified:
 // --------------------------------------------------------------------------------------------------------------------
-// Purpose:
+// Purpose: This file creates the drama class. Child class of movie.
 // --------------------------------------------------------------------------------------------------------------------
-// Notes on specifications, special algorithms, and assumptions.
+// Assumptions: file will be formatted correctly
 // --------------------------------------------------------------------------------------------------------------------
 
 #ifndef Drama_h
 #define Drama_h
 #include "Movie.h"
 
+using namespace std;
+
 class Drama: public Movie {
     
 public:
+    //constructor
     Drama();
-    Drama(const string&); // constructor
-    Drama(const string&, const string&, const int&); // constructor
-    std::istream& setData(std::istream &stream);
-    static const char TYPE = 'D'; // movieType
+    //overload constructor
+    Drama(const string&);
+    //overload constructor
+    Drama(const string&, const string&, const int&); 
+    //setdata
+    istream& setData(istream &stream);
+    //movieType
+    static const char TYPE = 'D'; 
+    //operator <
     bool operator<(const Movie&)const;
-    std::string getHashKey() ;
+    string getHashKey() ;
 protected:
-    std::ostream& toOutput(std::ostream &) const;
+    ostream& toOutput(ostream &) const;
 };
 
 #endif /* Drama_h */
