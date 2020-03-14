@@ -1,15 +1,20 @@
-//
-//  main.cpp
-//  Assignment4
-//
-//  Created by Diana Gutierrez on 3/13/20.
-//  Copyright © 2020 Diana Gutierrez. All rights reserved.
-//
+// -------------------------------------------------- main.cpp --------------------------------------------------------
+// Andrea Shirley-Bellande & Diana Gutierrez , 343C
+// Created: March 6, 2020
+// Last Modified: March 14, 2020
+// --------------------------------------------------------------------------------------------------------------------
+// Purpose: This file calls the store class to process the files
+// --------------------------------------------------------------------------------------------------------------------
+// Assumptions: files will be formatted correctly
+// --------------------------------------------------------------------------------------------------------------------
 
-#include <iostream>
 
-int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
-    return 0;
+#include "Store.h"
+
+int main(int argc, const char * argv[]) 
+{
+    Store store;
+    store.loadMovies("data4movies.txt");
+    store.loadCustomers("data4customers.txt");
+    store.runCommands("data4commands.txt");
 }
