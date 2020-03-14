@@ -4,9 +4,9 @@
 // Created: March 6, 2020
 // Last Modified:
 // --------------------------------------------------------------------------------------------------------------------
-// Purpose: 
+// Purpose: This class will implement the HashNode class
 // --------------------------------------------------------------------------------------------------------------------
-// Notes on specifications, special algorithms, and assumptions. 
+// Notes: This class uses a template
 // -------------------------------------------------------------------------------------------------------------------- 
 
 #ifndef HashNode_hpp
@@ -20,27 +20,27 @@ const int TABLE_SIZE = 15;
 template <typename K, typename V>
 class HashNode {
 public:
-    HashNode(const K &key, const V &value) :
+    HashNode(const K &key, const V &value) : //constructor
     key(key), value(value), next(NULL) {
     }
 
-    K getKey() const {
+    K getKey() const { //key getter
         return key;
     }
 
-    V getValue() const {
+    V getValue() const { //value getter
         return value;
     }
 
-    void setValue(V value) {
+    void setValue(V value) { //value setter
         HashNode::value = value;
     }
 
-    HashNode *getNext() const {
+    HashNode *getNext() const { //next getter
         return next;
     }
 
-    void setNext(HashNode *next) {
+    void setNext(HashNode *next) {// next setter
         HashNode::next = next;
     }
 

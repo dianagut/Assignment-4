@@ -3,9 +3,9 @@
 // Created: March 6, 2020
 // Last Modified:
 // --------------------------------------------------------------------------------------------------------------------
-// Purpose:
+// Purpose: This class will implement the HashMap class
 // --------------------------------------------------------------------------------------------------------------------
-// Notes on specifications, special algorithms, and assumptions.
+// Notes: This class uses a template
 // --------------------------------------------------------------------------------------------------------------------
 
 #ifndef HashMap_hpp
@@ -14,8 +14,8 @@
 #include <string>
 #include "Movie.h"
 #include "HashNode.h"
+using namespace std;
 
-// https://medium.com/@aozturk/simple-hash-map-hash-table-implementation-in-c-931965904250
 // Hash map class template
 template <typename K, typename V, typename F = KeyHash<K> >
 class HashMap {
@@ -27,9 +27,10 @@ public:
 
     ~HashMap() {
         // destroy all buckets one by one
-        for (int i = 0; i < TABLE_SIZE; ++i) {
+        for (int i = 0; i < TABLE_SIZE; ++i)
+        {
             HashNode<K, V> *entry = table[i];
-            while (entry != NULL) {
+            while (entry) {
                 HashNode<K, V> *prev = entry;
                 entry = entry->getNext();
                 delete prev;
@@ -40,11 +41,11 @@ public:
         delete [] table;
     }
 
-    bool get(const K &key, V &value) {
+    bool get(const K &key, V &value) { //
         unsigned long hashValue = hashFunc(key);
         HashNode<K, V> *entry = table[hashValue];
 
-        while (entry != NULL) {
+        while (entry) {
             if (entry->getKey() == key) {
                 value = entry->getValue();
                 return true;
@@ -59,14 +60,14 @@ public:
         HashNode<K, V> *prev = NULL;
         HashNode<K, V> *entry = table[hashValue];
 
-        while (entry != NULL && entry->getKey() != key) {
+        while (entry && entry->getKey() != key) {
             prev = entry;
             entry = entry->getNext();
         }
 
-        if (entry == NULL) {
+        if (!entry) {
             entry = new HashNode<K, V>(key, value);
-            if (prev == NULL) {
+            if (!prev) {
                 // insert as first bucket
                 table[hashValue] = entry;
             } else {
@@ -83,17 +84,17 @@ public:
         HashNode<K, V> *prev = NULL;
         HashNode<K, V> *entry = table[hashValue];
 
-        while (entry != NULL && entry->getKey() != key) {
+        while (entry && entry->getKey() != key) {
             prev = entry;
             entry = entry->getNext();
         }
 
-        if (entry == NULL) {
+        if (!entry) {
             // key not found
             return;
         }
         else {
-            if (prev == NULL) {
+            if (!prev) {
                 // remove first bucket of the list
                 table[hashValue] = entry->getNext();
             } else {
@@ -122,9 +123,9 @@ private:
 };
 
 struct MovieHash {
-    unsigned long operator()(const std::string& k) const
+    unsigned long operator()(const string& k) const
     {
-        return std::hash<std::string>()(k) % TABLE_SIZE;
+        return hash<string>()(k) % TABLE_SIZE;
     }
 };
 
