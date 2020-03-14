@@ -5,7 +5,7 @@
 // --------------------------------------------------------------------------------------------------------------------
 // Purpose: This class will Implement the MovieFactory
 // --------------------------------------------------------------------------------------------------------------------
-// Notes on specifications, special algorithms, and assumptions.
+// Assumptions: Movie will be created
 // --------------------------------------------------------------------------------------------------------------------
 
 
@@ -13,10 +13,11 @@
 #define MovieFactory_hpp
 
 #include "Movie.h"
+using namespace std;
 
 class MovieFactory {
 public:
-    static Movie* createMovieFromLine(std::string);
+    static Movie* createMovieFromLine(string);//will create a new movie 
 };
 
 #endif /* MovieFactory_hpp */

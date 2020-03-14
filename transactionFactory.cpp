@@ -3,27 +3,28 @@
 // Created: March 6, 2020
 // Last Modified:
 // --------------------------------------------------------------------------------------------------------------------
-// Purpose:
+// Purpose: Will create a new transaction
 // --------------------------------------------------------------------------------------------------------------------
-// Notes on specifications, special algorithms, and assumptions.
+// Asumptions: Will create a new transaction of type borrow, return, history or inventory
 // -------------------------------------------------------------------------------------------------------------------- 
 
-
-
 #include "transactionFactory.h"
-
-
 using namespace std;
 
-Transaction* TransactionFactory::createTransaction(std::string line)
+// ---------------------createTransaction--------------------------------
+// createTransaction: reads in command and identifies transaction type
+// preconditions: Takes in command as string
+// postconditions: If transaction exits will create a new transaction
+// -------------------------------------------------------------------------
+Transaction* TransactionFactory::createTransaction(string line)
 {
-    Transaction* transaction = NULL;
-    if (line.length() > 0) {
-        std::istringstream iss(line);
-        std::string type;
-        iss >> type;
+    Transaction* transaction = NULL; //create a new transaction
+    if (line.length() > 0) { // if the line in is not empty
+        istringstream iss(line);
+        string type;
+        iss >> type; // read in transaction type
 
-        switch (type[0])
+        switch (type[0]) // identifies whether the transaction is borrow, return, history, or inventory
         {
         case 'B':
             transaction = new Borrow();
@@ -37,13 +38,13 @@ Transaction* TransactionFactory::createTransaction(std::string line)
         case 'I':
             transaction = new Inventory();
             break;
-        default:
-            std::cerr << type << " is not a valid command"<<  std::endl;
-            transaction = NULL;
+        default: // if it is an invalid transaction
+            cerr << type << " is not a valid command"<< endl;
+                delete transaction;
             break;
         }
         if (transaction) {
-            transaction->setData(line);
+            transaction->setData(line);//set the data
         }
     }
     return transaction;

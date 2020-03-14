@@ -5,66 +5,85 @@
 // --------------------------------------------------------------------------------------------------------------------
 // Purpose: This class will Implement the transactioFactory
 // --------------------------------------------------------------------------------------------------------------------
-// Notes on specifications, special algorithms, and assumptions.
 // --------------------------------------------------------------------------------------------------------------------
 
 #include "Store.h"
 #include "MovieFactory.h"
 #include "transactionFactory.h"
+using namespace std;
 
+// ---------------------constructor--------------------------------
+// constructor: creates a new store object
+// postconditions: Creates empty store object
+// -------------------------------------------------------------------------
 Store::Store() {
 
 }
 
-void Store::loadMovies(std::string fileName) {
-    if (fileName.empty()) {
-        throw std::invalid_argument("moviesFile was not provided");
+// ---------------------loadMovies--------------------------------
+// loadMovies: reads movies file
+// preconditions: There must be a movie file
+// postconditions: Will create movie objects as it reads in movies
+// -------------------------------------------------------------------------
+void Store::loadMovies(string fileName) {
+    if (fileName.empty()) {// check if file is empty
+        throw invalid_argument("moviesFile was not provided"); // if there was no file provided
     }
-    std::ifstream infile(fileName);
-    std::string line;
+    ifstream infile(fileName);
+    string line;
     
-    while (std::getline(infile, line))
+    while (getline(infile, line))//While there is a next line in the file
     {
-        Movie *movie = MovieFactory::createMovieFromLine(line);
+        Movie *movie = MovieFactory::createMovieFromLine(line); //create a movie
         if (movie) {
-            inventory.addItem(movie);
+            inventory.addItem(movie);//add movie to inventory
         }
     }
-    infile.close();
+    infile.close(); // close file
 }
 
-void Store::loadCustomers(std::string fileName) {
-    if (fileName.empty()) {
-        throw std::invalid_argument("customersfile was not provided");
+// ---------------------loadCustomers--------------------------------
+// loadCustomers: reads in customer file
+// preconditions: there must be a customer file
+// postconditions: will create customer objects as it reads in custoemrs
+// -------------------------------------------------------------------------
+void Store::loadCustomers(string fileName) {
+    if (fileName.empty()) { //check if file is empty
+        throw invalid_argument("customersfile was not provided"); // there was no file found
     }
-    std::ifstream infile(fileName);
-    std::string line;
+    ifstream infile(fileName);
+    string line;
     
     while (!infile.eof())
     {
-        Customer *c = new Customer();
-        if(c->setData(infile)) {
-            customers.addCustomer(c);
+        Customer *c = new Customer(); // create a new customer
+        if(c->setData(infile)) { //read in data
+            customers.addCustomer(c); // add customer to hashmap
         }
     }
     
-    infile.close();
+    infile.close(); //close file
 }
 
-void Store::runCommands(std::string filename) {
-    if (filename.empty()) {
-        throw std::invalid_argument("commandsFile was not provided");
+// ---------------------runCommands--------------------------------
+// runCommands: reads and runs command file
+// preconditions: must be a command file
+// postconditions: will run commands and create new transactions
+// -------------------------------------------------------------------------
+void Store::runCommands(string filename) {
+    if (filename.empty()) { //check if file is empty
+        throw invalid_argument("commandsFile was not provided"); //no file found
     }
-    std::ifstream infile(filename);
-    std::string line;
+    ifstream infile(filename);
+    string line;
     
-    while (std::getline(infile, line))
+    while (getline(infile, line))
     {
-        Transaction *t = TransactionFactory::createTransaction(line);
+        Transaction *t = TransactionFactory::createTransaction(line); // create a new transaction
         if (t) {
-            t->processTransaction(&inventory, &customers);
+            t->processTransaction(&inventory, &customers); // process the transaction
         }
     }
     
-    infile.close();
+    infile.close(); // close file
 }

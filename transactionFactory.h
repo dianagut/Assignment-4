@@ -5,24 +5,21 @@
 // --------------------------------------------------------------------------------------------------------------------
 // Purpose: This class will Implement the transactioFactory 
 // --------------------------------------------------------------------------------------------------------------------
-// Notes on specifications, special algorithms, and assumptions. 
+// Assumptions: Will successfully create a new transaction
 // -------------------------------------------------------------------------------------------------------------------- 
 
 #pragma once
-
 #include "StoreInventory.h"
 #include "transaction.h"
 #include "Borrow.h"
 #include "History.h"
 #include "Inventory.h"
 #include "Return.h"
-
 using namespace std;
-
 
 class TransactionFactory
 {
 public:
-	static Transaction* createTransaction(std::string);
+	static Transaction* createTransaction(string); // will create a new transaction
 };
 

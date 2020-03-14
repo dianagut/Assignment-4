@@ -3,9 +3,9 @@
 // Created: March 6, 2020
 // Last Modified:
 // --------------------------------------------------------------------------------------------------------------------
-// Purpose:
+// Purpose: Return transaction
 // --------------------------------------------------------------------------------------------------------------------
-// Notes on specifications, special algorithms, and assumptions.
+// Assumptions: will process the return transaction
 // --------------------------------------------------------------------------------------------------------------------
 
 #ifndef Return_h
@@ -15,7 +15,7 @@
 
 class Return : public BorrowOrReturn {
 public:
-    Return() : BorrowOrReturn('R') { }
-    void innerProcess(Movie*, Customer*);
+    Return() : BorrowOrReturn('R') { } // constructor
+    void innerProcess(Movie*, Customer*); //inner proccess of the return transaction
 };
 #endif

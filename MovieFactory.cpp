@@ -3,9 +3,9 @@
 // Created: March 6, 2020
 // Last Modified:
 // --------------------------------------------------------------------------------------------------------------------
-// Purpose: This class will Implement the MovieFactory
+// Purpose: Creates a new movie from movie file
 // --------------------------------------------------------------------------------------------------------------------
-// Notes on specifications, special algorithms, and assumptions.
+// Assumptions: new movie will be created from reading in movie type
 // --------------------------------------------------------------------------------------------------------------------
 
 #include <iostream>
@@ -16,29 +16,35 @@
 #include "Drama.h"
 #include "Comedy.h"
 #include "Classics.h"
+using namespace std;
 
-Movie* MovieFactory::createMovieFromLine(std::string line)
+// ---------------------createMovieFromLine--------------------------------
+// createMovieFromLine: reads in movie type from file and creates movie
+// preconditions: There must be a valid movie file
+// postconditions: Classic, Drama, or Comedy movie will be created
+// -------------------------------------------------------------------------
+Movie* MovieFactory::createMovieFromLine(string line)
 {
-    Movie* answer = NULL;
+    Movie* answer = NULL; // movie pointer
     if (line.length() > 0) {
-        std::istringstream iss(line);
-        std::string type;
-        iss >> type;
+        istringstream iss(line);
+        string type;
+        iss >> type; // read in movie type
         switch (type[0]) {
         case 'D':
-            answer = new Drama();
+            answer = new Drama(); // if D create a new drama movie
             break;
         case 'C':
-            answer = new Classics();
+            answer = new Classics(); // if C create a new classic movie
             break;
         case 'F':
-            answer = new Comedy();
+            answer = new Comedy(); // if F create a new comedy movie
             break;
         default:
-                std::cerr << "Movie type " << line[0] << " not recognized :" <<  std::endl << "\t" << line <<  std::endl;
+                cerr << "Movie type " << line[0] << " not recognized :" <<  endl << "\t" << line <<  endl; // print if movie type not recognized
         }
-        if (answer) {
-            answer->setData(iss);
+        if (answer) { // if answer is not NULL
+            answer->setData(iss); // set movie data
         }
     }
     return answer;
