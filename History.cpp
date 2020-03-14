@@ -20,10 +20,10 @@ using namespace std;
 // -------------------------------------------------------------------------
 void History::processTransaction(StoreInventory*, CustomerStorage* customers) 
 {
-    Customer *c = customers->findCustomer(customerId);
-    if (c) 
+    Customer *customer = customers->findCustomer(customerId);
+    if (customer) 
     {
-        c->showHistory(cout);
+        customer->showHistory(cout);
     } 
     else 
     {
