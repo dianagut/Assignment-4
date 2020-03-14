@@ -173,21 +173,21 @@ void Customer::doBorrow(Movie* movie)
 // preconditions: none
 // postconditions: put, get, and remove hashkey
 // -----------------------------------------------------------------
-bool Customer::doReturn(Movie *m) 
+bool Customer::doReturn(Movie *movie) 
 {
-    if(m) 
+    if(movie) 
     {
         int qty = 0;
-        if (borrowed.get(m->getHashKey(), qty) && qty > 0) 
+        if (borrowed.get(movie->getHashKey(), qty) && qty > 0) 
         {
             qty--;
             if (qty>0) 
             {
-                borrowed.put(m->getHashKey(), qty);
+                borrowed.put(movie->getHashKey(), qty);
             } 
             else 
             {
-                borrowed.remove(m->getHashKey());
+                borrowed.remove(movie->getHashKey());
             }
         } 
         else 
