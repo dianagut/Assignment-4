@@ -1,11 +1,11 @@
 // ------------------------------------------- HistoryCommand.h -------------------------------------------------------
 // Andrea Shirley-Bellande & Diana Gutierrez , 343C
 // Created: March 6, 2020
-// Last Modified:
+// Last Modified: March 14, 2020
 // --------------------------------------------------------------------------------------------------------------------
-// Purpose:
+// Purpose: This file creates the transaction class
 // --------------------------------------------------------------------------------------------------------------------
-// Notes on specifications, special algorithms, and assumptions.
+// Assumptions: file will be formatted correctly
 // --------------------------------------------------------------------------------------------------------------------
 
 #ifndef History_h
@@ -13,10 +13,14 @@
 
 #include "transaction.h"
 
-class History : public Transaction {
+class History : public Transaction 
+{
 public:
+    //history H
     History() : Transaction('H') { }
+    //processes transaction
     void processTransaction(StoreInventory*, CustomerStorage*);
-    void setData(std::string);
+    //sets the data
+    void setData(string);
 };
 #endif

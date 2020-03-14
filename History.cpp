@@ -1,29 +1,46 @@
 // ----------------------------------------------- HistoryCommand.cpp -------------------------------------------------
 // Andrea Shirley-Bellande & Diana Gutierrez , 343C
 // Created: March 6, 2020
-// Last Modified:
+// Last Modified: March 14, 2020
 // --------------------------------------------------------------------------------------------------------------------
-// Purpose:
+// Purpose: This file implements the history class
 // --------------------------------------------------------------------------------------------------------------------
-// Notes on specifications, special algorithms, and assumptions.
+// Assumptions: file will be formatted correctly
 // --------------------------------------------------------------------------------------------------------------------
 
 #include <iostream>
 #include "History.h"
 
-void History::processTransaction(StoreInventory*, CustomerStorage* customers) {
+using namespace std;
+
+// ---------------------processTransaction--------------------------------
+// processTransaction: processes the transactions
+// preconditions: none
+// postconditions: processes history
+// -------------------------------------------------------------------------
+void History::processTransaction(StoreInventory*, CustomerStorage* customers) 
+{
     Customer *c = customers->findCustomer(customerId);
-    if (c) {
-        c->showHistory(std::cout);
-    } else {
-        std::cerr << "Customer " << customerId << " was not found" <<  std::endl;
+    if (c) 
+    {
+        c->showHistory(cout);
+    } 
+    else 
+    {
+        cerr << "Customer " << customerId << " was not found" <<  endl;
     }
 }
 
-void History::setData(std::string line) {
+// ---------------------setData--------------------------------
+// setData: sets data
+// preconditions: none
+// postconditions: reads in data from file
+// -------------------------------------------------------------------------
+void History::setData(string line) 
+{
     Transaction::setData(line);
-    std::istringstream iss(line);
-    std::string temp;
+    istringstream iss(line);
+    string temp;
     iss >> temp;
     iss >> customerId;
 }
