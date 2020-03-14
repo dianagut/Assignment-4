@@ -1,14 +1,12 @@
 // ------------------------------------------------Borrow.cpp----------------------------------------------------
 // Andrea Shirley-Bellande & Diana Gutierrez , 343C
 // Created: March 6, 2020
-// Last Modified:
+// Last Modified: March 14th, 2020
 // --------------------------------------------------------------------------------------------------------------------
 // Purpose: This is the implementation of the borrow class. 
 // --------------------------------------------------------------------------------------------------------------------
 // Assumptions: input will be formatted correctly
 // --------------------------------------------------------------------------------------------------------------------
-
-
 
 #include <iterator>
 #include <algorithm>
@@ -23,12 +21,15 @@ using namespace std;
 // -------------------------------------------------------------------------
 void Borrow::innerProcess(Movie* movie, Customer* customer) 
 {
-        if (!movie->descreaseStock(amount)) {
-            cerr << "Not enough of " << movieData << endl;
-        } else {
-            customer->storeHistory(rawCommand);
-            customer->doBorrow(movie);
-        }
+    if (!movie->descreaseStock(1)) 
+    {
+        cerr << "Not enough of " << movieData << endl;
+    } 
+    else 
+    {
+        customer->storeHistory(rawCommand);
+        customer->doBorrow(movie);
     }
+}
 
 

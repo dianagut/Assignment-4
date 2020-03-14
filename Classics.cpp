@@ -1,7 +1,7 @@
 // ------------------------------------------------Classics.cpp -------------------------------------------------------
 // Andrea Shirley-Bellande & Diana Gutierrez , 343C
 // Created: March 6, 2020
-// Last Modified:
+// Last Modified: March 14, 2020
 // --------------------------------------------------------------------------------------------------------------------
 // Purpose: This file implements the classics class
 // --------------------------------------------------------------------------------------------------------------------
@@ -87,7 +87,8 @@ bool Classics::operator==(const Movie& movie) const
     {
         const Classics& classicsCast = static_cast<const Classics&>(movie);
         equals &= majorActor == classicsCast.majorActor;
-    } catch (const bad_cast& e) 
+    } 
+    catch (const bad_cast& e) 
     {
         return equals;
     }

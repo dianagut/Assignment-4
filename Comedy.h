@@ -1,11 +1,11 @@
 // ------------------------------------------------Comedy.h -------------------------------------------------------
 // Andrea Shirley-Bellande & Diana Gutierrez , 343C
 // Created: March 6, 2020
-// Last Modified:
+// Last Modified: March 14, 2020
 // --------------------------------------------------------------------------------------------------------------------
-// Purpose:
+// Purpose: File creates comedy class
 // --------------------------------------------------------------------------------------------------------------------
-// Notes on specifications, special algorithms, and assumptions.
+// Assumptions: File will be formatted correctly
 // --------------------------------------------------------------------------------------------------------------------
 
 
@@ -17,18 +17,25 @@
 #include <fstream>
 #include <sstream>
 #include "Movie.h"
+
 using namespace std;
 
 class Comedy: public Movie {
 
 public:
+    //constructor
     Comedy();
-    Comedy(const string&, const string&, const int&); // constructor
-    std::istream& setData(std::istream &stream);
-    static const char TYPE = 'F'; // movieType
+    //default contructor
+    Comedy(const string&, const string&, const int&);
+    //setsdata
+    istream& setData(istream &stream);
+    //movietype
+    static const char TYPE = 'F'; 
+    //< overload
     bool operator<(const Movie&)const;
-    std::string getHashKey() ;
+    //getter for hash key
+    string getHashKey() ;
 protected:
-    std::ostream& toOutput(std::ostream &) const;
+    ostream& toOutput(ostream &) const;
 };
 #endif /* Comedy_h */

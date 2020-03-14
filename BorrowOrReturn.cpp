@@ -1,7 +1,7 @@
 // ------------------------------------------- BorrowOrReturn.cpp ---------------------------------------------------
 // Andrea Shirley-Bellande & Diana Gutierrez , 343C
 // Created: March 6, 2020
-// Last Modified:
+// Last Modified: March 14, 2020
 // --------------------------------------------------------------------------------------------------------------------
 // Purpose: Implements the borroworreturn class
 // --------------------------------------------------------------------------------------------------------------------
@@ -13,7 +13,7 @@
 
 using namespace std;
 
-// ---------------------BorroworReturn--------------------------------
+// ---------------------ProcessTransaction--------------------------------
 // Constructor: processes a borrow or return.
 // preconditions: takes in inventory and customer
 // postconditions: checks if item exists 
@@ -40,7 +40,8 @@ void BorrowOrReturn::processTransaction(StoreInventory* inventory, CustomerStora
             return;
         }
         innerProcess(movie, customer);
-    } else 
+    } 
+    else 
     {
         cerr << "Customer " << customerId << " was not found" <<  endl;
     }
