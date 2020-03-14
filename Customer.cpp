@@ -151,7 +151,7 @@ void Customer::showHistory(ostream &output)
 }
 
 // ---------------------doBorrow--------------------------------
-// doBorrow: doborrow 
+// doBorrow: kets key for borrow
 // preconditions: none
 // postconditions: put and get hashkey
 // -----------------------------------------------------------------
@@ -169,7 +169,7 @@ void Customer::doBorrow(Movie* movie)
 }
 
 // ---------------------doReturn--------------------------------
-// doReturn: do return
+// doReturn: gets key for return
 // preconditions: none
 // postconditions: put, get, and remove hashkey
 // -----------------------------------------------------------------
