@@ -3,19 +3,20 @@
 // Created: March 6, 2020
 // Last Modified:
 // --------------------------------------------------------------------------------------------------------------------
-// Purpose:
+// Purpose: This file creates a movie class. 
 // --------------------------------------------------------------------------------------------------------------------
-// Notes on specifications, special algorithms, and assumptions.
+// Assumptions: files will be formatted correctly 
 // --------------------------------------------------------------------------------------------------------------------
 
 #ifndef Movie_h
 #define Movie_h
 #include <string>
 #include "StringUtils.h"
+
 using namespace std;
 
  class Movie {
-     friend std::ostream & operator<<(std::ostream &, const Movie &);
+     friend ostream & operator<<(ostream &, const Movie &);
  public:
      // destructor
      virtual ~Movie() {
@@ -34,7 +35,7 @@ using namespace std;
      virtual bool operator>(const Movie&) const;
      virtual bool operator<(const Movie&) const;
      
-     virtual std::istream& setData(std::istream &);
+     virtual istream& setData(istream &);
 
      // getters / setters
      char getMovieType() { return movieType; }
@@ -44,10 +45,10 @@ using namespace std;
      int getReleaseYear() { return releaseYear; }
      char getMediaType() { return mediaType; }
 
-     virtual std::string getHashKey() { return title; }
+     virtual string getHashKey() { return title; }
  protected:
      Movie(char, char mediaType = 'D'); // constructor
-     virtual std::ostream& toOutput(std::ostream &) const;
+     virtual ostream& toOutput(ostream &) const;
      
      char mediaType;
      char movieType;
@@ -56,7 +57,7 @@ using namespace std;
      string title;
      int releaseYear;
 
-     std::string hashKey = "";
+     string hashKey = "";
  };
 
 #endif /* Movie_h */
