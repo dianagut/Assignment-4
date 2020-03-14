@@ -111,15 +111,15 @@ bool Customer::setData(istream& infile)
     }
     try 
     {
-        std::string temp;
-        std::getline(infile, temp, ' ');
+        string temp;
+        getline(infile, temp, ' ');
         if (temp.empty()) 
         {
             return false;
         }
         customerID = std::stoi(temp);
-        std::getline(infile, firstName, ' ');
-        std::getline(infile, lastName);
+        getline(infile, firstName, ' ');
+        getline(infile, lastName);
     } 
     catch (const char *msg) 
     {
