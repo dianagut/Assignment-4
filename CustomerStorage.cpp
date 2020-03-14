@@ -1,41 +1,80 @@
 // ------------------------------------------------ CustomerStorage ---------------------------------------------------
 // Andrea Shirley-Bellande & Diana Gutierrez , 343C
 // Created: March 6, 2020
-// Last Modified:
+// Last Modified: March 14, 2020
 // --------------------------------------------------------------------------------------------------------------------
-// Purpose: This class will Implement the transactioFactory
+// Purpose: This class will Implement the customer storage
 // --------------------------------------------------------------------------------------------------------------------
-// Notes on specifications, special algorithms, and assumptions.
+// Assumptions: files will be formatted correctly
 // --------------------------------------------------------------------------------------------------------------------
 
 #include "CustomerStorage.h"
 
-CustomerStorage::~CustomerStorage() {
-    // free memory for all customers
+using namespace std;
+
+// ---------------------constructor--------------------------------
+// Constructor: default constructor
+// preconditions: none
+// postconditions: sets fname, lname, and customerID
+// -------------------------------------------------------------------------
+CustomerStorage::CustomerStorage()
+{
 
 }
 
-void CustomerStorage::addCustomer(Customer *c) {
-    if (c && c->getID()) {
-        customers.put(c->getID(), c);
-        Customer *t;
-        customers.get(c->getID(), t);
-        if (!t || t->getID() != c->getID()) {
-            std::cerr << c->getID() << " not found " << std::endl;
+// ---------------------destructor--------------------------------
+// destructor: deallocates memory
+// preconditions: none
+// postconditions: frees memory 
+// ------------------------------------------------------------------
+CustomerStorage::~CustomerStorage() 
+{
+   
+
+}
+
+// ---------------------addcustomer--------------------------------
+// addcustomer: adds customer
+// preconditions: none
+// postconditions: adds customer ID
+// ------------------------------------------------------------------
+void CustomerStorage::addCustomer(Customer* customer) 
+{
+    if (customer && customer->getID()) 
+    {
+        customers.put(customer->getID(), customer);
+        Customer* t;
+        customers.get(customer->getID(), t);
+        if (!t || t->getID() != customer->getID()) 
+        {
+            cerr << customer->getID() << " not found " << endl;
         }
     }
 }
 
-Customer* CustomerStorage::findCustomer(int id) {
-    Customer *c;
-    return customers.get(id, c) ? c : NULL;
+// ---------------------findcustomer--------------------------------
+// findcustomer: finds the customer
+// preconditions: none
+// postconditions: finds the customer 
+// ------------------------------------------------------------------
+Customer* CustomerStorage::findCustomer(int id) 
+{
+    Customer *customer;
+    return customers.get(id, customer) ? customer : NULL;
 }
 
-void CustomerStorage::listIds() {
+// ---------------------listIDs--------------------------------
+// addcustomer: list customer IDs
+// preconditions: none
+// postconditions: displays customer ids
+// ------------------------------------------------------------------
+void CustomerStorage::listIds() 
+{
     int keys[1000];
     int count = customers.getKeys(keys);
-    for(int i = 0 ; i <= count; i++) {
-        std::cout << i << ": " << keys[i] << "\n";
+    for(int i = 0 ; i <= count; i++) 
+    {
+        cout << i << ": " << keys[i] << "\n";
     }
-    std::cout << "--" << std::endl;
+    cout << "--" << std::endl;
 }

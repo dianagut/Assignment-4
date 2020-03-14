@@ -1,108 +1,201 @@
 //------------------------------------------------Customer.cpp------------------------------------------------------ -
 // Andrea Shirley-Bellande & Diana Gutierrez , 343C
 // Created: March 6, 2020
-// Last Modified:
+// Last Modified: March 14, 2020 
 // --------------------------------------------------------------------------------------------------------------------
-// Purpose: 
+// Purpose: Implementation of the customer class
 // --------------------------------------------------------------------------------------------------------------------
-// Notes on specifications, special algorithms, and assumptions. 
+// Assumptions: File will be formatted correctly
 // --------------------------------------------------------------------------------------------------------------------  
 
 #include <iterator>
 #include "Customer.h"
+
 using namespace std;
 
-Customer::Customer() {
+// ---------------------constructor--------------------------------
+// Constructor: default constructor
+// preconditions: none
+// postconditions: sets fname, lname, and customerID
+// -------------------------------------------------------------------------
+Customer::Customer() 
+{
     firstName = "";
     lastName = "";
     customerID = 0;
 }
 
-Customer::Customer(string first, string last, int ID) {
+// ---------------------constructor--------------------------------
+// Constructor: constructor
+// preconditions: none
+// postconditions: sets fname, lname, and customerID
+// -------------------------------------------------------------------------
+Customer::Customer(string first, string last, int ID) 
+{
     firstName = first;
     lastName = last;
     customerID = ID;
 }
 
-Customer::~Customer() {
+// ---------------------destructor--------------------------------
+// destructor: deallocates memory
+// preconditions: none
+// postconditions: deallocates memory
+// -----------------------------------------------------------------
+Customer::~Customer() 
+{
 
 }
 
-int Customer::getID()const {
+// ---------------------getID--------------------------------
+// getID: getter for ID
+// preconditions: none
+// postconditions: gets the customer ID
+// -----------------------------------------------------------------
+int Customer::getID()const 
+{
     return customerID;
 }
 
-string Customer::getName() const {
+// ---------------------getName--------------------------------
+// getName:  getter for name
+// preconditions: none
+// postconditions: get first name and last
+// -----------------------------------------------------------------
+string Customer::getName() const 
+{
     return firstName + " " + lastName;
 }
 
-string Customer::getFirst()const {
+// ---------------------getFirst--------------------------------
+// getFirst: getter for first name
+// preconditions: none
+// postconditions: gets first name
+// -----------------------------------------------------------------
+string Customer::getFirst()const 
+{
     return firstName;
 }
 
-string Customer::getLast() const {
+// ---------------------getLast--------------------------------
+// getLast: getter for last name
+// preconditions: none
+// postconditions: gets last name
+// -----------------------------------------------------------------
+string Customer::getLast() const 
+{
     return lastName;
 }
 
-ostream & operator<<(ostream &output, const Customer &cust) {
+// ---------------------outputoperator--------------------------------
+// outputoperator: produces output
+// preconditions: none
+// postconditions: displays output 
+// -----------------------------------------------------------------
+ostream & operator<<(ostream &output, const Customer &cust) 
+{
     output << cust.getID() << " " << cust.firstName << " " << cust.lastName;
     return output;
 }
 
-bool Customer::setData(istream& infile) {
-    if (infile.eof()) {
+// ---------------------setData--------------------------------
+// setData: gsets data from file
+// preconditions: none
+// postconditions: reads data from the file
+// -----------------------------------------------------------------
+bool Customer::setData(istream& infile) 
+{
+    if (infile.eof()) 
+    {
         return false;
     }
-    try {
+    try 
+    {
         std::string temp;
         std::getline(infile, temp, ' ');
-        if (temp.empty()) {
+        if (temp.empty()) 
+        {
             return false;
         }
         customerID = std::stoi(temp);
         std::getline(infile, firstName, ' ');
         std::getline(infile, lastName);
-    } catch (const char *msg) {
+    } 
+    catch (const char *msg) 
+    {
         return false;
     }
     return true;       // eof function is true when eof char is read
 }
 
-void Customer::storeHistory(std::string command) {
+// ---------------------storeHistory--------------------------------
+// storeHistory: store history 
+// preconditions: none
+// postconditions: pushes store history
+// -----------------------------------------------------------------
+void Customer::storeHistory(string command) 
+{
     history.push_back(command);
 }
 
-void Customer::showHistory(ostream &output) {
-    output << "History for " << getName() <<  std::endl;
-    std::reverse_copy(history.begin(), history.end(), std::ostream_iterator<std::string>(output, "\n"));
-    output << "-- end of history --" <<  std::endl;
+// ---------------------showhistory--------------------------------
+// showhistory: shows history
+// preconditions: none
+// postconditions: displays history
+// -----------------------------------------------------------------
+void Customer::showHistory(ostream &output) 
+{
+    output << "History for " << getName() <<  endl;
+    reverse_copy(history.begin(), history.end(), ostream_iterator<string>(output, "\n"));
+    output << "-- end of history --" <<  endl;
 }
 
-void Customer::doBorrow(Movie* movie) {
-    if(movie) {
+// ---------------------doBorrow--------------------------------
+// doBorrow: doborrow 
+// preconditions: none
+// postconditions: put and get hashkey
+// -----------------------------------------------------------------
+void Customer::doBorrow(Movie* movie) 
+{
+    if(movie) 
+    {
         int qty = 1;
-        if ( borrowed.get(movie->getHashKey(), qty)) {
+        if ( borrowed.get(movie->getHashKey(), qty)) 
+        {
             qty++;
         }
         borrowed.put(movie->getHashKey(), qty);
     }
 }
 
-bool Customer::doReturn(Movie *m) {
-    if(m) {
+// ---------------------doReturn--------------------------------
+// doReturn: do return
+// preconditions: none
+// postconditions: put, get, and remove hashkey
+// -----------------------------------------------------------------
+bool Customer::doReturn(Movie *m) 
+{
+    if(m) 
+    {
         int qty = 0;
-        if (borrowed.get(m->getHashKey(), qty) && qty > 0) {
+        if (borrowed.get(m->getHashKey(), qty) && qty > 0) 
+        {
             qty--;
-            if (qty>0) {
+            if (qty>0) 
+            {
                 borrowed.put(m->getHashKey(), qty);
-            } else {
+            } 
+            else 
+            {
                 borrowed.remove(m->getHashKey());
             }
-        } else {
+        } 
+        else 
+        {
             return false;
         }
         return true;
     }
-    std::cerr << "Invalid movie"  <<  std::endl;
+    cerr << "Invalid movie"  <<  endl;
     return false;
 }

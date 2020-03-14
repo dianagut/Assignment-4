@@ -1,11 +1,11 @@
 //------------------------------------------------Customer.h------------------------------------------------------ -
 // Andrea Shirley-Bellande & Diana Gutierrez , 343C
 // Created: March 6, 2020
-// Last Modified:
+// Last Modified: March 14, 2020
 // --------------------------------------------------------------------------------------------------------------------
-// Purpose: 
+// Purpose: this file creates the customer class
 // --------------------------------------------------------------------------------------------------------------------
-// Notes on specifications, special algorithms, and assumptions. 
+// Assumptions: Data in file is formed correctly
 // --------------------------------------------------------------------------------------------------------------------  
 
 #ifndef Customer2_h
@@ -21,7 +21,8 @@
 
 using namespace std;
 
-class Customer {
+class Customer 
+{
     friend ostream & operator<<(ostream &, const Customer &);
 
 public:
@@ -48,10 +49,10 @@ private:
     int customerID;
     string firstName;
     string lastName;
-    std::vector<std::string> history;
+    vector<string> history;
     // list of borrowed movies, indexed by movie sorting string
     // we store how many of the movie the customer has
-    HashMap<std::string, int, MovieHash> borrowed;
+    HashMap<string, int, MovieHash> borrowed;
 };
 
 #endif
