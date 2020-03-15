@@ -1,4 +1,3 @@
-
 // ------------------------------------------------HashNode.h -------------------------------------------------------
 // Andrea Shirley-Bellande & Diana Gutierrez , 343C
 // Created: March 6, 2020
@@ -15,49 +14,55 @@
 #include <string>
 #include "Movie.h"
 
-const int TABLE_SIZE = 15;
+const int TABLE_SIZE = 25;
 
-template <typename K, typename V>
-class HashNode {
+template <typename Key, typename Val>
+class HashNode 
+{
 public:
-    HashNode(const K &key, const V &value) : //constructor
-    key(key), value(value), next(NULL) {
+    HashNode(const Key& k, const Val& v) : //constructor
+        k(k), v(v), next(NULL) {
     }
 
-    K getKey() const { //key getter
-        return key;
+    Key getKey() const 
+    { 
+        return k;
     }
 
-    V getValue() const { //value getter
-        return value;
+    Val getValue() const 
+    { 
+        return v;
     }
 
-    void setValue(V value) { //value setter
-        HashNode::value = value;
+    void setValue(Val v) 
+    { 
+        HashNode::v = v;
     }
 
-    HashNode *getNext() const { //next getter
+    HashNode* getNext() const 
+    { 
         return next;
     }
 
-    void setNext(HashNode *next) {// next setter
+    void setNext(HashNode* next) 
+    {
         HashNode::next = next;
     }
 
 private:
-    // key-value pair
-    K key;
-    V value;
-    // next bucket with the same key
-    HashNode *next;
+
+    Key k;
+    Val v;
+    HashNode* next;
 };
 
 // Default hash function class
-template <typename K>
-struct KeyHash {
-    unsigned long operator()(const K& key) const
+template <typename Key>
+struct KeyHash 
+{
+    int operator()(const Key& k) const
     {
-        return reinterpret_cast<unsigned long>(key) % TABLE_SIZE;
+        return reinterpret_cast<int>(k) % TABLE_SIZE;
     }
 };
 

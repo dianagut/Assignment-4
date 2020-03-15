@@ -12,7 +12,7 @@
 #define CustomerStorage_h
 
 #include "Customer.h"
-#include "HashMap.h"
+#include "HashTable.h"
 
 class CustomerStorage 
 {
@@ -39,7 +39,7 @@ private:
     };
     // Customers indexed by the customerID
     // store only pointers to customers
-    HashMap<int, Customer*, CustomerHash> customers;
+    HashTable<int, Customer*, CustomerHash> customers;
 };
 
 #endif /* CustomerStorage_h */

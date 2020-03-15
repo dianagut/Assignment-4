@@ -15,7 +15,7 @@
 #include <fstream>
 #include <string>
 #include <sstream>
-#include "HashMap.h"
+#include "HashTable.h"
 #include "StoreInventory.h"
 #include "CustomerStorage.h"
 using namespace std;

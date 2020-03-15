@@ -14,7 +14,7 @@
 #include <stdio.h>
 #include <vector>
 #include "Movie.h"
-#include "HashMap.h"
+#include "HashTable.h"
 using namespace std;
 
 class StoreInventory {
@@ -32,7 +32,7 @@ private:
     
     static const int MAX_TYPES = 10;
     // Movies indexed by the HashKey - and that depends on every Movie Type
-    HashMap<string, Movie*, MovieHash> movies;
+    HashTable<string, Movie*, MovieHash> movies;
     // optimization to store the sorted list of movies
     // we only store pointers, to avoid wasting memory
     int sortedCount[MAX_TYPES];
