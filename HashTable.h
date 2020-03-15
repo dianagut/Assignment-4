@@ -1,7 +1,7 @@
 // ----------------------------------------------- HashMap.h ----------------------------------------------------------
 // Andrea Shirley-Bellande & Diana Gutierrez , 343C
 // Created: March 6, 2020
-// Last Modified:
+// Last Modified: March 14, 2020
 // --------------------------------------------------------------------------------------------------------------------
 // Purpose: This class will implement the HashMap class
 // --------------------------------------------------------------------------------------------------------------------
@@ -21,11 +21,21 @@ template <typename Key, typename Val, typename F = KeyHash<Key> >
 class HashTable 
 {
 public:
+// ---------------------constructor--------------------------------
+// constructor: constructor
+// preconditions: none
+// postconditions: table
+// ------------------------------------------------------------------------
     HashTable() 
     {
         table = new HashNode<Key, Val> * [TABLE_SIZE]();
     }
 
+// ---------------------destructor--------------------------------
+// destructor: deallocates memory
+// preconditions: none
+// postconditions: deallocates memory when out of scope
+// ------------------------------------------------------------------------
     ~HashTable() 
     {
         for (int i = 0; i < TABLE_SIZE; ++i)
@@ -42,6 +52,11 @@ public:
         delete[] table;
     }
 
+// ---------------------insert--------------------------------
+// insert:inserts in table
+// preconditions: none
+// postconditions: inserts the key and value
+// ------------------------------------------------------------------------
     void insert(const Key& k, const Val& v) 
     {
         int hashVal = function(k);
@@ -72,6 +87,11 @@ public:
         }
     }
 
+// ---------------------retrieve--------------------------------
+// retrieve: retreives item
+// preconditions: none
+// postconditions: returns true if item matches
+// ------------------------------------------------------------------------
     bool retrieve(const Key& k, Val& v) 
     { 
         int hashVal = function(k);
@@ -89,6 +109,11 @@ public:
         return false;
     }
 
+ // ---------------------removeItem--------------------------------
+// removeItem: removes given item
+// preconditions: takes in k
+// postconditions: finds the item and deletes
+// ------------------------------------------------------------------------
     void removeItem(const Key& k) 
     {
         int hashVal = function(k);
@@ -117,6 +142,11 @@ public:
         }
     }
 
+// ---------------------getKeys--------------------------------
+// getKeys: getter for keys
+// preconditions: none
+// postconditions: returns index
+// ------------------------------------------------------------------------
     int getKeys(Key keys[]) const 
     {
         int index = 0;
@@ -137,6 +167,7 @@ private:
     F function;
 };
 
+//struct for moviehash
 struct MovieHash 
 {
     int operator()(const string& k) const
