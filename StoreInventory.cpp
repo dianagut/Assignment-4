@@ -47,7 +47,7 @@ StoreInventory::~StoreInventory() {
 // -------------------------------------------------------------------------
 void StoreInventory::addItem(Movie* movie) {
     if (movie) { // if there is an accurate movie object
-        movies.put(movie->getHashKey(), movie); // put in hashmap
+        movies.insert(movie->getHashKey(), movie); // put in hashtable
         insertSorted(movie); // call insertSorted method
     }
 }
@@ -58,7 +58,7 @@ void StoreInventory::addItem(Movie* movie) {
 // -------------------------------------------------------------------------
 Movie* StoreInventory::findItem(string key) {
     Movie *m = NULL; // create a pointer
-    movies.get(key, m); // check if movie exists in inventory
+    movies.retrieve(key, m); // check if movie exists in inventory
     return m;
 }
 
