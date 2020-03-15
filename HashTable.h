@@ -23,7 +23,6 @@ class HashTable
 public:
     HashTable() 
     {
-        // construct zero initialized hash table of size
         table = new HashNode<Key, Val> * [TABLE_SIZE]();
     }
 
@@ -43,13 +42,14 @@ public:
         delete[] table;
     }
 
-    void put(const Key& k, const Val& v) 
+    void insert(const Key& k, const Val& v) 
     {
         int hashVal = function(k);
         HashNode<Key, Val>* prev = NULL;
         HashNode<Key, Val>* item = table[hashVal];
 
-        while (item && item->getKey() != k) {
+        while (item && item->getKey() != k) 
+        {
             prev = item;
             item = item->getNext();
         }
@@ -72,14 +72,15 @@ public:
         }
     }
 
-    bool get(const Key& k, Val& v) 
+    bool retrieve(const Key& k, Val& v) 
     { 
         int hashVal = function(k);
         HashNode<Key, Val>* item = table[hashVal];
 
         while (item) 
         {
-            if (item->getKey() == k) {
+            if (item->getKey() == k) 
+            {
                 v = item->getValue();
                 return true;
             }
@@ -88,7 +89,8 @@ public:
         return false;
     }
 
-    void remove(const Key& k) {
+    void removeItem(const Key& k) 
+    {
         int hashVal = function(k);
         HashNode<Key, Val>* prev = NULL;
         HashNode<Key, Val>* item = table[hashVal];
@@ -99,12 +101,10 @@ public:
         }
 
         if (!item) {
-            // key not found
             return;
         }
         else {
             if (!prev) {
-                // remove first bucket of the list
                 table[hashVal] = item->getNext();
             }
             else {
@@ -129,7 +129,7 @@ public:
     }
 
 private:
-    // hash table
+
     HashNode<Key, Val>** table;
     F function;
 };
