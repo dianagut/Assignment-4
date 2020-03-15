@@ -89,12 +89,14 @@ public:
         return false;
     }
 
-    void removeItem(const Key& k) {
+    void removeItem(const Key& k) 
+    {
         int hashVal = function(k);
         HashNode<Key, Val>* prev = NULL;
         HashNode<Key, Val>* item = table[hashVal];
 
-        while (item && item->getKey() != k) {
+        while (item && item->getKey() != k) 
+        {
             prev = item;
             item = item->getNext();
         }
@@ -103,12 +105,14 @@ public:
         {
             return;
         }
-        else {
+        else 
+        {
             if (!prev) 
             {
                 table[hashVal] = item->getNext();
             }
-            else {
+            else 
+            {
                 prev->setNext(item->getNext());
             }
             delete item;
@@ -121,7 +125,8 @@ public:
         for (int i = 0; i < TABLE_SIZE; i++) 
         {
             HashNode<Key, Val>* item = table[i];
-            while (item != NULL) {
+            while (item != NULL) 
+            {
                 keys[index++] = item->getKey();
                 item = item->getNext();
             }
