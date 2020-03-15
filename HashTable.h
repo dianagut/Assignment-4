@@ -85,7 +85,7 @@ public:
         }
         else 
         {
-            item->setValue(v);
+            item->setVal(v);
         }
     }
 
@@ -103,7 +103,7 @@ public:
         {
             if (item->getKey() == k) 
             {
-                v = item->getValue();
+                v = item->getVal();
                 return true;
             }
             item = item->getNext();

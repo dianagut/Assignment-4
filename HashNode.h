@@ -45,7 +45,7 @@ public:
 // preconditions: none
 // postconditions: gets the value
 // ------------------------------------------------------------------------
-    Val getValue() const 
+    Val getVal() const 
     { 
         return v;
     }
@@ -55,7 +55,7 @@ public:
 // preconditions: none
 // postconditions: sets the value
 // ------------------------------------------------------------------------
-    void setValue(Val v) 
+    void setVal(Val v) 
     { 
         HashNode::v = v;
     }
