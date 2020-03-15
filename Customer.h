@@ -17,7 +17,7 @@
 #include <algorithm>
 #include <string>
 #include <vector>
-#include "HashMap.h"
+#include "HashTable.h"
 
 using namespace std;
 
@@ -52,7 +52,7 @@ private:
     vector<string> history;
     // list of borrowed movies, indexed by movie sorting string
     // we store how many of the movie the customer has
-    HashMap<string, int, MovieHash> borrowed;
+    HashTable<string, int, MovieHash> borrowed;
 };
 
 #endif
