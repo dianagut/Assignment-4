@@ -16,34 +16,63 @@
 
 const int TABLE_SIZE = 25;
 
+//template
 template <typename Key, typename Val>
 class HashNode 
 {
 public:
+// ---------------------constructor--------------------------------
+// constructor: constructor
+// preconditions: none
+// postconditions: sets k, v, and next
+// ------------------------------------------------------------------------
     HashNode(const Key& k, const Val& v) : 
         k(k), v(v), next(NULL) {
     }
 
+ // ---------------------getkey--------------------------------
+// getKey: getter for key
+// preconditions: none
+// postconditions: gets the key
+// ------------------------------------------------------------------------
     Key getKey() const 
     { 
         return k;
     }
 
+// --------------------getValue--------------------------------
+// getValue: getter for the value
+// preconditions: none
+// postconditions: gets the value
+// ------------------------------------------------------------------------
     Val getValue() const 
     { 
         return v;
     }
 
+// ---------------------setValue--------------------------------
+// setValue: setter for the value
+// preconditions: none
+// postconditions: sets the value
+// ------------------------------------------------------------------------
     void setValue(Val v) 
     { 
         HashNode::v = v;
     }
-
+// ---------------------getNext--------------------------------
+// getNext: getter for next
+// preconditions: none
+// postconditions: gets next 
+// ------------------------------------------------------------------------
     HashNode* getNext() const 
     { 
         return next;
     }
-
+// ---------------------setNext--------------------------------
+// setNext: setter for next
+// preconditions: none
+// postconditions: sets the next
+// ------------------------------------------------------------------------
     void setNext(HashNode* next) 
     {
         HashNode::next = next;
@@ -56,7 +85,7 @@ private:
     HashNode* next;
 };
 
-
+//struct for keyHash
 template <typename Key>
 struct KeyHash 
 {
