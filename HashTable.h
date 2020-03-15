@@ -1,9 +1,9 @@
-// ----------------------------------------------- HashTable.h ----------------------------------------------------------
+// ----------------------------------------------- HashMap.h ----------------------------------------------------------
 // Andrea Shirley-Bellande & Diana Gutierrez , 343C
 // Created: March 6, 2020
 // Last Modified:
 // --------------------------------------------------------------------------------------------------------------------
-// Purpose: This class will implement the HashTable class
+// Purpose: This class will implement the HashMap class
 // --------------------------------------------------------------------------------------------------------------------
 // Notes: This class uses a template
 // --------------------------------------------------------------------------------------------------------------------
@@ -33,9 +33,9 @@ public:
             HashNode<Key, Val>* item = table[i];
             while (item)
             {
-                HashNode<Key, Val>* prev = item;
+                HashNode<Key, Val>* p = item;
                 item = item->getNext();
-                delete prev;
+                delete p;
             }
             table[i] = NULL;
         }
@@ -45,25 +45,25 @@ public:
     void insert(const Key& k, const Val& v) 
     {
         int hashVal = function(k);
-        HashNode<Key, Val>* prev = NULL;
+        HashNode<Key, Val>* p = NULL;
         HashNode<Key, Val>* item = table[hashVal];
 
         while (item && item->getKey() != k) 
         {
-            prev = item;
+            p = item;
             item = item->getNext();
         }
 
         if (!item) 
         {
             item = new HashNode<Key, Val>(k, v);
-            if (!prev) 
+            if (!p) 
             {
                 table[hashVal] = item;
             }
             else 
             {
-                prev->setNext(item);
+                p->setNext(item);
             }
         }
         else 
@@ -92,12 +92,12 @@ public:
     void removeItem(const Key& k) 
     {
         int hashVal = function(k);
-        HashNode<Key, Val>* prev = NULL;
+        HashNode<Key, Val>* p = NULL;
         HashNode<Key, Val>* item = table[hashVal];
 
         while (item && item->getKey() != k) 
         {
-            prev = item;
+            p = item;
             item = item->getNext();
         }
 
@@ -105,15 +105,13 @@ public:
         {
             return;
         }
-        else 
-        {
-            if (!prev) 
+        else {
+            if (!p) 
             {
                 table[hashVal] = item->getNext();
             }
-            else 
-            {
-                prev->setNext(item->getNext());
+            else {
+                p->setNext(item->getNext());
             }
             delete item;
         }
@@ -125,8 +123,7 @@ public:
         for (int i = 0; i < TABLE_SIZE; i++) 
         {
             HashNode<Key, Val>* item = table[i];
-            while (item != NULL) 
-            {
+            while (item != NULL) {
                 keys[index++] = item->getKey();
                 item = item->getNext();
             }

@@ -20,7 +20,7 @@ template <typename Key, typename Val>
 class HashNode 
 {
 public:
-    HashNode(const Key& k, const Val& v) : //constructor
+    HashNode(const Key& k, const Val& v) : 
         k(k), v(v), next(NULL) {
     }
 
@@ -56,7 +56,7 @@ private:
     HashNode* next;
 };
 
-// Default hash function class
+
 template <typename Key>
 struct KeyHash 
 {
