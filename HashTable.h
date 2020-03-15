@@ -17,9 +17,11 @@
 using namespace std;
 
 //template
-template <typename Key, typename Val, typename F = KeyHash<Key> >
+template <typename Key, typename Val, typename Function = KeyHash<Key> >
+
 class HashTable 
 {
+
 public:
 // ---------------------constructor--------------------------------
 // constructor: constructor
@@ -130,12 +132,14 @@ public:
         {
             return;
         }
-        else {
+        else 
+        {
             if (!p) 
             {
                 table[hashVal] = item->getNext();
             }
-            else {
+            else 
+            {
                 p->setNext(item->getNext());
             }
             delete item;
@@ -164,7 +168,7 @@ public:
 private:
 
     HashNode<Key, Val>** table;
-    F function;
+    Function function;
 };
 
 //struct for moviehash
