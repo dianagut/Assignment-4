@@ -42,9 +42,9 @@ void CustomerStorage::addCustomer(Customer* customer)
 {
     if (customer && customer->getID()) 
     {
-        customers.put(customer->getID(), customer);
+        customers.insert(customer->getID(), customer);
         Customer* t;
-        customers.get(customer->getID(), t);
+        customers.retrieve(customer->getID(), t);
         if (!t || t->getID() != customer->getID()) 
         {
             cerr << customer->getID() << " not found " << endl;
@@ -60,7 +60,7 @@ void CustomerStorage::addCustomer(Customer* customer)
 Customer* CustomerStorage::findCustomer(int id) 
 {
     Customer *customer;
-    return customers.get(id, customer) ? customer : NULL;
+    return customers.retrieve(id, customer) ? customer : NULL;
 }
 
 // ---------------------listIDs--------------------------------

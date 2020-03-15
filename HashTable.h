@@ -89,8 +89,7 @@ public:
         return false;
     }
 
-    void removeItem(const Key& k) 
-    {
+    void removeItem(const Key& k) {
         int hashVal = function(k);
         HashNode<Key, Val>* prev = NULL;
         HashNode<Key, Val>* item = table[hashVal];
@@ -100,11 +99,13 @@ public:
             item = item->getNext();
         }
 
-        if (!item) {
+        if (!item) 
+        {
             return;
         }
         else {
-            if (!prev) {
+            if (!prev) 
+            {
                 table[hashVal] = item->getNext();
             }
             else {

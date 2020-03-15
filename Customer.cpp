@@ -160,11 +160,11 @@ void Customer::doBorrow(Movie* movie)
     if(movie) 
     {
         int qty = 1;
-        if ( borrowed.get(movie->getHashKey(), qty)) 
+        if ( borrowed.retrieve(movie->getHashKey(), qty)) 
         {
             qty++;
         }
-        borrowed.put(movie->getHashKey(), qty);
+        borrowed.insert(movie->getHashKey(), qty);
     }
 }
 
@@ -178,16 +178,16 @@ bool Customer::doReturn(Movie *movie)
     if(movie) 
     {
         int qty = 0;
-        if (borrowed.get(movie->getHashKey(), qty) && qty > 0) 
+        if (borrowed.retrieve(movie->getHashKey(), qty) && qty > 0) 
         {
             qty--;
             if (qty>0) 
             {
-                borrowed.put(movie->getHashKey(), qty);
+                borrowed.insert(movie->getHashKey(), qty);
             } 
             else 
             {
-                borrowed.remove(movie->getHashKey());
+                borrowed.removeItem(movie->getHashKey());
             }
         } 
         else 
