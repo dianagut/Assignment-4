@@ -40,7 +40,7 @@ public:
         return k;
     }
 
-// --------------------getValue--------------------------------
+// --------------------getVal--------------------------------
 // getValue: getter for the value
 // preconditions: none
 // postconditions: gets the value
@@ -50,7 +50,7 @@ public:
         return v;
     }
 
-// ---------------------setValue--------------------------------
+// ---------------------setVal--------------------------------
 // setValue: setter for the value
 // preconditions: none
 // postconditions: sets the value
